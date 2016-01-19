@@ -88,9 +88,9 @@ foreach ($devicesList as $v) {
                     class="glyphicon  glyphicon-pushpin toolsHeader"></span></button>
 
 
-                    <button type="button" data-poload="json/getStatusDevices.php?h=true&ID=' . $IDDevices . '"
+                    <button type="button" data-placement="bottom" data-poload="json/getStatusDevices.php?h=true&ID=' . $IDDevices . '"
                      class="close" aria-label="Close"><span
-                    class="glyphicon glyphicon glyphicon-comment toolsHeader"></span></button>
+                    class="glyphicon  glyphicon-comment toolsHeader"></span></button>
 
 
  <button  type="button" data-toggle="tooltip" data-placement="top" title="بوليصة الشحن"
@@ -119,7 +119,7 @@ foreach ($devicesList as $v) {
 
 
 
-                    <button type="button" data-toggle="tooltip" data-poload="json/devices/getInfoDevice.php?&ID=' . $IDDevices . '" data-placement="top" title="معلومات الجهاز"
+                    <button type="button"  data-poload="json/devices/getInfoDevice.php?&ID=' . $IDDevices . '" data-placement="bottom" title="معلومات الجهاز"
                     class="close" aria-label="Close"><span
                     class="fa fa-info-circle   toolsHeader"></span></button>
 

@@ -7,7 +7,7 @@
 
 
 var $LoadingIndectior = '<img alt="Loaded" style="width: 16px; height: 16px"  src="./images/load.gif" />';
-
+var spinner;
 
 //اضافة نوع جهاز
 
@@ -356,13 +356,12 @@ $(".searchClassType").keyup(function () {
     //alert($('.searchClassType').text()+", "+$('.btn-select2').text());
 
 
-    if ($(this).val().length==0){
+    if ($(this).val().length == 0) {
         displayListMenu(false);
 
 
         return false;
     }
-
 
 
     var name = $(this).attr("dataSearch");
@@ -431,7 +430,7 @@ function showListDevices(ID) {
     headrTitle('اجهزة العملاء');
 
 
-    $("#Contener").html($LoadingIndectior);
+    $("#Contener").append(spinner.el);
 
     $("#Contener").load("json/getDevices.php?ID=" + ID, function () {
 
@@ -449,32 +448,44 @@ function showListDevices(ID) {
             });
 
 
-            // Ajax get Status Devices
-
-            $("*[data-poload]").click(function () {
-                el = $(this);
-                $.get(el.data('poload') + '&n=' + $.now(), function (response) {
-
-                    //el.button('loading');
+        // Ajax get Status Devices
 
 
-                    el.unbind('click').popover({
-                        content: response,
-                        html: true,
-                        title: '<span class="text-info "><strong>حالة الجهاز</strong></span>' +
-                        '<button type="button" id="close" class="close closeX">&times;</button>',
-                        delay: {show: 500, hide: 100}
-                    }).popover('show');
+        $('*[data-poload]').popover({
+            "html": true,
+            placement: $(this).attr('data-placement'),
+            title: '<span  class="text-info "><strong>حالة الجهاز</strong></span>' +
+            '<a href="#Close"><i class="fa fa-times-circle fa-2 pull-right closeX"></i></a>',
 
-
-                    el.on('shown.bs.popover', function (e) {
-                        var popover = jQuery(this);
-                        jQuery(this).parent().find('div.popover .closeX').on('click', function (e) {
-                            popover.popover('hide');
-                        });
-                    });
-                });
+            "content": function () {
+                var div_id = "tmp-id-" + $.now();
+                return details_in_popup($(this).attr('data-poload'), div_id);
+            }
             });
+
+
+        function details_in_popup(link, div_id) {
+
+
+            var div = $('<div/>', {
+                id: div_id,
+                text: 'Loading!'
+            });
+
+            $.ajax({
+                url: link,
+                success: function (response) {
+                    $('#' + div_id).html(response);
+                }
+            });
+            return $(div).html(spinner.el);
+        }
+
+
+
+
+
+
 
 
             $('[data-toggle="tooltip"]').tooltip();
@@ -505,6 +516,9 @@ function loadStatUsBar(id) {
 $(document).ready(function () {
 
     console.log("ready!");
+
+
+    spinner = new Spinner().spin();
 
 
     getLastCustemer();
@@ -773,8 +787,6 @@ function displayListMenu(s) {
 }
 
 
-
-
 /**
  * حصول على بيانات الاجهزة رميا شارت
  */
@@ -886,7 +898,7 @@ function setSearchBy(s) {
     $('[data-toggle="popover"]').popover('hide');
 
 
-   var v= $("#searchBy").val(v);
+    var v = $("#searchBy").val(v);
 
 
     $("#labelSearch").html(n);

@@ -23,16 +23,24 @@ function creatAppendMenu($v, $icon = null)
             <li class="dropdown-menu-list slimscroll tasks" style="overflow: hidden; width: auto; height: 100%;">
                 <ul class="list-unstyled">
                     <li>
-                            <div class="task-icon badge "><i class="glyphicon ' . $icon . '"></i></div>
-                            <p class="task-details">' . $v . '</p>
+                            <div class="task-icon badge ">
+                            <i class="glyphicon ' . $icon . '"></i>
+                            </div>
+                            <p class="task-details greenColor" >' . $v . '</p>
 
                     </li>
                 </ul>
             </li>
-        </div>';
+        </div>
+
+        ';
 
 
 }
+
+
+echo '<ul class="list-unstyled">';
+
 
 
 $IDdevices = (int)$_GET['ID'];
@@ -48,7 +56,6 @@ $devicesList = $db->where('devices.idDevices', $IDdevices);
 $devicesN = $db->getOne('devices');
 
 
-//echo '<hr class="redHr"><hr/>';
 
 echo creatAppendMenu($devicesN['Name'], 'glyphicon-user');
 echo creatAppendMenu($devicesN['MobileNumber'], 'glyphicon-phone-alt');
