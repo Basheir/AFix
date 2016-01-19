@@ -1,0 +1,48 @@
+<form id="addNewDevicesForm" action="#" method="post" role="search" class="form-horizontal">
+
+
+    <div class="panel panel-default panel-body panel-title  clearfix">
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                <input type="text" name="NameDevices" class="form-control" placeholder="نوع الجهاز"
+                       aria-describedby="basic-addon1" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="ImageUrl" id="ImageUrl" class="form-control" placeholder=" "
+                       aria-describedby="basic-addon1" required>
+            </div>
+
+
+
+
+        <div class="container">
+            <div class="row" style="padding-top:10px;">
+                <div class="col-xs-2">
+                    <button id="uploadBtn" class="btn btn-large btn-primary">صورة</button>
+                </div>
+                <div class="col-xs-10">
+                    <div id="progressOuter" class="progress progress-striped active" style="display:none;">
+                        <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar"
+                             aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="row" style="padding-top:10px;">
+                <div class="col-xs-10">
+                    <div id="msgBox">
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <button type="submit" class="btn btn btn-success">Submit</button>
+
+    </div>
+
+</form>
+
+

@@ -1,0 +1,63 @@
+<form id="addNewCustemerForm" action="insertNewCoustemer.php" method="post" class="form-horizontal">
+    <div class="panel panel-default ">
+
+        <div class="panel-body panel-title  clearfix">
+
+
+            <div class="form-group">
+                <label for="Name" class="col-sm-2 control-label">الاسم</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="Name" id="Name" placeholder="الاسم" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="MobileNumber" class="col-sm-2 control-label">رقم هاتف</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="MobileNumber" id="MobileNumber"
+                           placeholder="رقم هاتف" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Serial" class="col-sm-2 control-label">Serial</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="Serial" id="Serial" placeholder="Serial">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="IDTypeDeviceTitle" class="col-sm-2 control-label">نوع جهاز</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="IDTypeDeviceTitle" id="IDTypeDeviceTitle"
+                           placeholder="نوع الجهاز" required>
+                    <input type="text" name="IDTypeDevice" id="IDTypeDevice" style="display: none"/>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Comment" class="col-sm-2 control-label">ملاحظة</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="Comment" id="Comment" placeholder="ملاحظة">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Comment" class="col-sm-2 control-label">مبلغ</label>
+                <div class="col-sm-10">
+                    <input type="input" class="form-control" name="Mony" value="0" id="Mony" placeholder="مبلغ">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn  btn-success">حفظ</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
