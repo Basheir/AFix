@@ -98,9 +98,12 @@ foreach ($devicesList as $v) {
                     class="glyphicon glyphicon-plane toolsHeader"></span></button>
 
 
- <button type="button" data-toggle="tooltip" data-placement="top" title="تعديل مبلغ الصيانة"
+ <button type="button"  data-toggle="tooltip" data-placement="top" title="تعديل مبلغ الصيانة"
                     onclick="editMonyDevices(' . $IDDevices . ')" class="close" aria-label="Close"><span
                     class="glyphicon glyphicon-usd  toolsHeader"></span></button>
+
+
+
 
 
 
@@ -113,6 +116,12 @@ foreach ($devicesList as $v) {
         <div class="panel-heading">
 
             <p class="panel-title">' . $v['NameDevices'] . '</p>
+
+
+
+                    <button type="button" data-toggle="tooltip" data-poload="json/devices/getInfoDevice.php?&ID=' . $IDDevices . '" data-placement="top" title="معلومات الجهاز"
+                    class="close" aria-label="Close"><span
+                    class="fa fa-info-circle   toolsHeader"></span></button>
 
 
 
