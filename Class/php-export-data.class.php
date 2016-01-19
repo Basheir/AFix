@@ -6,12 +6,11 @@
  * classes below.
  */
 abstract class ExportData {
-	protected $exportTo; // Set in constructor to one of 'browser', 'file', 'string'
-	protected $stringData; // stringData so far, used if export string mode
-	protected $tempFile; // handle to temp file (for export file mode)
-	protected $tempFilename; // temp file name and path (for export file mode)
-
-	public $filename; // file mode: the output file name; browser mode: file name for download; string mode: not used
+	public $filename; // Set in constructor to one of 'browser', 'file', 'string'
+	protected $exportTo; // stringData so far, used if export string mode
+	protected $stringData; // handle to temp file (for export file mode)
+	protected $tempFile; // temp file name and path (for export file mode)
+	protected $tempFilename; // file mode: the output file name; browser mode: file name for download; string mode: not used
 
 	public function __construct($exportTo = "browser", $filename = "exportdata") {
 		if(!in_array($exportTo, array('browser','file','string') )) {
@@ -38,15 +37,41 @@ abstract class ExportData {
 		
 		$this->write($this->generateHeader());
 	}
-	
-	public function addRow($row) {
+
+	abstract public function sendHttpHeaders();
+
+	protected function write($data)
+	{
+		switch($this->exportTo) {
+			case 'browser':
+				echo $data;
+				break;
+			case 'string':
+				$this->stringData .= $data;
+				break;
+			case 'file':
+				fwrite($this->tempFile, $data);
+				break;
+		}
+	}
+
+	protected function generateHeader()
+	{
+		// can be overridden by subclass to return any data that goes at the top of the exported file
+	}
+
+	public function addRow($row)
+	{
 		$this->write($this->generateRow($row));
 	}
-	
-	public function finalize() {
-		
+
+	abstract protected function generateRow($row);
+
+	public function finalize()
+	{
+
 		$this->write($this->generateFooter());
-		
+
 		switch($this->exportTo) {
 			case 'browser':
 				flush();
@@ -62,36 +87,16 @@ abstract class ExportData {
 		}
 	}
 	
-	public function getString() {
-		return $this->stringData;
-	}
-	
-	abstract public function sendHttpHeaders();
-	
-	protected function write($data) {
-		switch($this->exportTo) {
-			case 'browser':
-				echo $data;
-				break;
-			case 'string':
-				$this->stringData .= $data;
-				break;
-			case 'file':
-				fwrite($this->tempFile, $data);
-				break;
-		}
-	}
-	
-	protected function generateHeader() {
-		// can be overridden by subclass to return any data that goes at the top of the exported file
-	}
-	
 	protected function generateFooter() {
 		// can be overridden by subclass to return any data that goes at the bottom of the exported file		
 	}
 	
 	// In subclasses generateRow will take $row array and return string of it formatted for export type
-	abstract protected function generateRow($row);
+
+	public function getString()
+	{
+		return $this->stringData;
+	}
 	
 }
 

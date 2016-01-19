@@ -444,6 +444,43 @@ class dbObject {
     }
 
     /**
+     * Function queries hasMany relations if needed and also converts hasOne object names
+     *
+     * @param array $data
+     */
+    private function processAllWith(&$data, $shouldReset = true)
+    {
+        if (count($this->_with) == 0)
+            return;
+
+        foreach ($this->_with as $name => $opts) {
+            $relationType = strtolower($opts[0]);
+            $modelName = $opts[1];
+            if ($relationType == 'hasone') {
+                $obj = new $modelName;
+                $table = $obj->dbTable;
+
+                if (!isset ($data[$table])) {
+                    $data[$name] = $this->$name;
+                    continue;
+                }
+                if ($this->returnType == 'Object') {
+                    $item = new $modelName ($data[$table]);
+                    $item->returnType = $this->returnType;
+                    $item->isNew = false;
+                    $data[$name] = $item;
+                } else {
+                    $data[$name] = $data[$table];
+                }
+                unset ($data[$table]);
+            } else
+                $data[$name] = $this->$name;
+        }
+        if ($shouldReset)
+            $this->_with = Array();
+    }
+
+    /**
      * Get object by primary key.
      *
      * @access public
@@ -534,43 +571,6 @@ class dbObject {
             foreach ($this->arrayFields as $key)
                 $data[$key] = explode ("|", $data[$key]);
         }
-    }
-
-    /**
-     * Function queries hasMany relations if needed and also converts hasOne object names
-     *
-     * @param array $data
-     */
-    private function processAllWith (&$data, $shouldReset = true) {
-        if (count ($this->_with) == 0)
-            return;
-
-        foreach ($this->_with as $name => $opts) {
-            $relationType = strtolower ($opts[0]);
-            $modelName = $opts[1];
-            if ($relationType == 'hasone') {
-                $obj = new $modelName;
-                $table = $obj->dbTable;
-
-                if (!isset ($data[$table])) {
-                    $data[$name] = $this->$name;
-                    continue;
-                }
-                if ($this->returnType == 'Object') {
-                    $item = new $modelName ($data[$table]);
-                    $item->returnType = $this->returnType;
-                    $item->isNew = false;
-                    $data[$name] = $item;
-                } else {
-                    $data[$name] = $data[$table];
-                }
-                unset ($data[$table]);
-            }
-            else
-                $data[$name] = $this->$name;
-        }
-        if ($shouldReset)
-            $this->_with = Array();
     }
 
     /**
