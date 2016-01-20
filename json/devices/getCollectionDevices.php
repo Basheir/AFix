@@ -13,7 +13,7 @@ $devicesN = $db->rawQuery('
 
     SELECT
   COUNT(devices.Finsh) AS C,
-  devices.IDTypeDevice,
+  devices.IDTypeDevice AS T,
   typedevices.NameDevices AS N
 FROM
   devices
@@ -31,7 +31,7 @@ GROUP BY
 foreach ($devicesN as $v) {
 
 
-    $resultImploud[] = array('type' => $v['N'], 'count' => $v['C']);
+    $resultImploud[] = array('type' => $v['N'], 'count' => $v['C'], 'IDTypeDevice' => $v['T']);
 
 }
 

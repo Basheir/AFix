@@ -44,6 +44,14 @@ if (isset($_GET['r'])) {
 }
 
 
+// عرض بحسب نوع الجهاز
+if (isset($_GET['t'])) {
+
+    $devicesList = $db->where('IDTypeDevice', $_GET['t']);
+}
+
+
+
 
 if ((int)$_GET['ID'] != 0) {
     $devicesList = $db->where('IdCustemer', (int)$_GET['ID']);

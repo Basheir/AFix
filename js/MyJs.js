@@ -530,7 +530,7 @@ $(document).ready(function () {
         var i = 0;
         $.each(data, function (key, val) {
 
-            $("#dropdownMenuNotfction").append('  <li> <a href="#"><div class="task-icon badge badge-success"><i class="fa fa-tablet"></i>  </div><span class="badge badge-roundless badge-default pull-right">' + val.count + '</span> <p class="task-details">' + val.type + '</p></a>  </li>');
+            $("#dropdownMenuNotfction").append('<li onclick=showListDevices("&t=' + val.IDTypeDevice + '") > <a href="#"><div class="task-icon badge badge-success"><i class="fa fa-tablet"></i>  </div><span class="badge badge-roundless badge-default pull-right">' + val.count + '</span> <p class="task-details">' + val.type + '</p></a>  </li>');
 
             i++;
 
