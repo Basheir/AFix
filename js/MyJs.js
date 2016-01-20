@@ -460,7 +460,7 @@ function showListDevices(ID) {
             "content": function () {
                 var div_id = "tmp-id-" + $.now();
                 return details_in_popup($(this).attr('data-poload'), div_id);
-            }
+                }
             });
 
 
@@ -480,12 +480,6 @@ function showListDevices(ID) {
             });
             return $(div).html(spinner.el);
         }
-
-
-
-
-
-
 
 
             $('[data-toggle="tooltip"]').tooltip();
@@ -526,6 +520,27 @@ $(document).ready(function () {
     //displayListMenu(true);
 
     $('[data-toggle="popover"]').popover({html: true});
+
+
+    // اضافة للبادج
+
+    $.getJSON("json/devices/getCollectionDevices.php", function (data) {
+
+
+        var i = 0;
+        $.each(data, function (key, val) {
+
+            $("#dropdownMenuNotfction").append('  <li> <a href="#"><div class="task-icon badge badge-success"><i class="fa fa-tablet"></i>  </div><span class="badge badge-roundless badge-default pull-right">' + val.count + '</span> <p class="task-details">' + val.type + '</p></a>  </li>');
+
+            i++;
+
+        });
+
+        $("#dropdownMenuNotfctionBdg").html(i);
+
+    });
+
+
 });
 
 
