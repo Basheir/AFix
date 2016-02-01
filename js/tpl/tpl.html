@@ -1,0 +1,83 @@
+<script id="DevicesListTemplate" type="x-jquery-tmpl">
+<div class="col-sm-3">
+    <div class="panel  panel-danger">
+        <div class="panel-heading">
+
+            <p class="panel-title">${NameDevices}</p>
+
+
+            <button type="button" data-poload=json/devices/getInfoDevice.php?&ID=${idDevices}"  data-placement="bottom"
+                    title="" class="close" aria-label="Close" data-original-title="معلومات الجهاز"><span
+                    class="fa fa-info-circle   toolsHeader"></span></button>
+
+
+            <span data-toggle="tooltip" data-placement="top" title="" class="badge pull-right badge-success"
+                  data-original-title="${DateAdded}">${totalDays}</span>
+
+        </div>
+
+        <div class="panel-body">
+
+            <div class="imgListDevices">
+                <img src="./imageDevices/${imageUrl}" alt="img">
+            </div>
+
+        </div>
+
+        <div class="panel-footer clearfix">
+            <div class="pull-right"> </div>
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="showModel(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="اضافة حالة"><span
+                    class="glyphicon glyphicon-plus toolsHeader"></span></button>
+
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="finshDevice(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="انهاء حالة الجهاز"><span
+                    class="glyphicon glyphicon-ok redColor  toolsHeader"></span></button>
+
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="printDevice(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="طباعة الفاتورة"><span
+                    class="glyphicon glyphicon-print toolsHeader"></span></button>
+
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="editRefDevices(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="اضافة رقم المرجع"><span
+                    class="glyphicon  glyphicon-pushpin toolsHeader"></span></button>
+
+
+            <button type="button" data-placement="bottom" data-poload="json/getStatusDevices.php?ID=${idDevices}"
+                    class="close" aria-label="Close" data-original-title="" title=""><span
+                    class="glyphicon  glyphicon-comment toolsHeader"></span></button>
+
+
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="editTracNumber(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="بوليصة الشحن"><span
+                    class="glyphicon glyphicon-plane toolsHeader"></span></button>
+
+
+            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="editMonyDevices(${idDevices})"
+                    class="close" aria-label="Close" data-original-title="تعديل مبلغ الصيانة"><span
+                    class="glyphicon glyphicon-usd  toolsHeader"></span></button>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+</script>
+
+
+<!-- تمبلت الخاص بعرض انواع الاجهزة مع العدد -->
+
+<script id="dropdownMenuNotfctionTpl" type="x-jquery-tmpl">
+<li onclick=showListDevices({t:'${IDTypeDevice}'}) > <a href="#${type}"><div class="task-icon badge badge-success">
+<i class="fa fa-tablet"></i>
+ </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
+ <p class="task-details">${type}</p></a>
+ </li>
+
+
+</script>
+
+

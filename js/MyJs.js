@@ -6,8 +6,11 @@
 
 
 
+
+
 var $LoadingIndectior = '<img alt="Loaded" style="width: 16px; height: 16px"  src="./images/load.gif" />';
 var spinner;
+
 
 //اضافة نوع جهاز
 
@@ -297,7 +300,7 @@ function ListCustemerGenrats(val) {
     var v = '';
 
 
-    v += '<a  onclick="showListDevices(' + val.ID + ');" href="#' + val.ID + '" class="showRight2"><img src="icons/custemers.png" alt=""><span>' + val.Name + '<small>' + val.DateAdded + '</small></span></a>';
+    v += '<a  onclick="showListDevices({ID:val.ID});" href="#' + val.ID + '" class="showRight2"><img src="icons/custemers.png" alt=""><span>' + val.Name + '<small>' + val.DateAdded + '</small></span></a>';
 
 
     return v;
@@ -365,7 +368,7 @@ $(".searchClassType").keyup(function () {
 
 
     var name = $(this).attr("dataSearch");
-    var value = $(this).val();
+    var val = $(this).val();
     var dataObj = {};
     dataObj[name] = value;
     dataObj['by'] = $("#searchBy").val();
@@ -374,7 +377,7 @@ $(".searchClassType").keyup(function () {
     if ($("#searchBy").val() == 's') {
 
 
-        showListDevices('0&s=' + value);
+        showListDevices({'s': val});
 
         return;
     }
@@ -382,7 +385,7 @@ $(".searchClassType").keyup(function () {
     if ($("#searchBy").val() == 'r') {
 
 
-        showListDevices('0&r=' + value);
+        showListDevices({'r': val});
 
         return;
     }
@@ -422,33 +425,87 @@ $(".searchClassType").keyup(function () {
 });
 
 
+/**
+ * تجميع قائمة عرض الاجهزة
+ * @param v
+ * @returns {string}
+ */
+
+
+
+/**
+ * تجميع قائمة عرض الاجهزة
+ * @param v
+ * @returns {string}
+ */
+//function creatPanelListDevices(v) {
+//
+//    var isFinsh = 'panel-danger';
+//    var redColor = 'redColor';
+//
+//    if (v.Finsh == '1') {
+//        isFinsh = 'panel-success';
+//        redColor = 'greenColor';
+//    }
+//
+//    var h = '<div class="panel-green"><div class="panel col-sm-3 panel-default ' + isFinsh + '">';
+//    h += '<div class="panel-heading box">';
+//    h += '<p class="panel-title">' + v.NameDevices + '</p>';
+//    h += '<a data-poload="json/devices/getInfoDevice.php?&ID=' + v.idDevices + '" data-placement="bottom" title="معلومات الجهاز" href="#' + v.idDevices + '" class="fa fa-info-circle pull-right"></a>';
+//    h += '</div>';
+//    h += '<div class="panel-body">  <div class="imgListDevices"><img  src="./imageDevices/' + v.imageUrl + '" alt="img"></div>';
+//    h += '<div class="panel-footer clearfix">';
+//    h += '<div class="pull-right">';
+//
+//    h += '<div class="btn-group">';
+//    h += '<a href="#showModel"      data-toggle="tooltip" data-placement="top" title="اضافة حالة"   onclick="showModel${idDevices + ')"  class="glyphicon  glyphicon-plus  fa-lg toolsHeader"></a>';
+//    h += '<a href="#finshDevice"    data-toggle="tooltip" data-placement="top" title="اانهاء حالة الجهاز" onclick="finshDevice${idDevices + ')" class="glyphicon  glyphicon-ok fa-lg toolsHeader"></a>';
+//    h += '<a href="#printDevice"    data-toggle="tooltip" data-placement="top" title="طباعة الفاتورة" onclick="printDevice${idDevices + ')" class="glyphicon  glyphicon-print fa-lg toolsHeader"></a>';
+//    h += '<a href="#editRefDevices" data-toggle="tooltip" data-placement="top" title="اضافة رقم المرجع" onclick="editRefDevices${idDevices + ')"  class="glyphicon  glyphicon-pushpin fa-lg toolsHeader"></a>';
+//    h += '<a href="#getStatusDevices"               data-placement="bottom" data-poload="json/getStatusDevices.php?h=true&ID=' + v.idDevices + '"  class="glyphicon  glyphicon-comment fa-lg toolsHeader"></a>';
+//    h += '<a href="#editTracNumber"               data-toggle="tooltip" data-placement="top" title="بوليصة الشحن"  onclick="editTracNumber${idDevices + ')"  class="glyphicon fa-lg glyphicon-plane toolsHeader"></a>';
+//    h += '<a href="#editMonyDevices"               data-toggle="tooltip" data-placement="top" title="تعديل مبلغ الصيانة" onclick="editMonyDevices${idDevices + ')" class="glyphicon fa-lg glyphicon-usd toolsHeader"></a>';
+//    h += '</div>';
+//    h += '</div>';
+//    h += '</div>';
+//    h += '</div>';
+//    h += '</div>';
+//    return h;
+//
+//
+//}
+
+
 /*
  عرض قائمة الاجهزة
  */
-function showListDevices(ID) {
+function showListDevices(d) {
+
+
+    if (d === undefined) {
+
+    }
+
 
     headrTitle('اجهزة العملاء');
 
+    $("#Contener").empty();
 
-    $("#Contener").append(spinner.el);
-
-    $("#Contener").load("json/getDevices.php?ID=" + ID, function () {
-
-            $('[datadevice =Device]').each(function (index) {
-                var val = $(this).attr('idDevices');
-                $(this).load("json/getStatusDevices.php?ID=" + val, function () {
-
-                    var loadingId = 'loading' + val;
-                    $('#' + loadingId).html($LoadingIndectior);
+    spinner = new Spinner().spin(document.body);
+    $("#Contener").append(spinner);
 
 
-                });
+    $.getJSON("json/devices/getListDevices.php?" + $.param(d), function (data) {
 
 
-            });
+        $("#Contener").empty();
+        $('#DevicesListTemplate').tmpl(data).appendTo('#Contener');
 
 
-        // Ajax get Status Devices
+        //console.log($('#DevicesListTemplate'));
+
+
+        spinner.stop();
 
 
         $('*[data-poload]').popover({
@@ -460,8 +517,8 @@ function showListDevices(ID) {
             "content": function () {
                 var div_id = "tmp-id-" + $.now();
                 return details_in_popup($(this).attr('data-poload'), div_id);
-                }
-            });
+            }
+        });
 
 
         function details_in_popup(link, div_id) {
@@ -471,6 +528,10 @@ function showListDevices(ID) {
                 id: div_id,
                 text: 'Loading!'
             });
+
+
+            $("#Contener").append(spinner);
+
 
             $.ajax({
                 url: link,
@@ -482,11 +543,11 @@ function showListDevices(ID) {
         }
 
 
-            $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').tooltip();
 
 
-        }
-    )
+        return false;
+    });
 
 
 }
@@ -512,32 +573,28 @@ $(document).ready(function () {
     console.log("ready!");
 
 
-    spinner = new Spinner().spin();
+    // تحميل التمبلت الى الصفحة الرئيسية
+    $.get("js/tpl/tpl.html", function (d) {
+        $("body").append(d)
+    });
+
 
 
     getLastCustemer();
-    showListDevices(0);
+    showListDevices({q: true});
+
+
+
+
     //displayListMenu(true);
 
     $('[data-toggle="popover"]').popover({html: true});
 
 
     // اضافة للبادج
-
     $.getJSON("json/devices/getCollectionDevices.php", function (data) {
-
-
-        var i = 0;
-        $.each(data, function (key, val) {
-
-            $("#dropdownMenuNotfction").append('<li onclick=showListDevices("&t=' + val.IDTypeDevice + '") > <a href="#"><div class="task-icon badge badge-success"><i class="fa fa-tablet"></i>  </div><span class="badge badge-roundless badge-default pull-right">' + val.count + '</span> <p class="task-details">' + val.type + '</p></a>  </li>');
-
-            i++;
-
-        });
-
-        $("#dropdownMenuNotfctionBdg").html(i);
-
+        $('#dropdownMenuNotfctionTpl').tmpl(data).appendTo('#dropdownMenuNotfction');
+        $("#dropdownMenuNotfctionBdg").html(data.length);
     });
 
 
@@ -921,5 +978,4 @@ function setSearchBy(s) {
     //showListDevices(v);
 
 }
-
 

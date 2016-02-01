@@ -19,7 +19,7 @@ FROM
   devices
   INNER JOIN typedevices ON (devices.IDTypeDevice = typedevices.ID)
 
-  WHERE   devices.Finsh <> 1
+  WHERE   devices.Finsh = "0"
 
 
 GROUP BY
