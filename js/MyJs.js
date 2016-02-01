@@ -326,18 +326,7 @@ function getLastCustemer() {
         url: 'json/getLastCoustemers.php',
         success: function (data) {
 
-            $("#listCustemers").html('');
-
-            var items = [];
-
-            $.each(data, function (key, val) {
-
-                items.push(ListCustemerGenrats(val));
-
-            });
-
-            $("#listCustemers").html(items.join(''));
-
+            $('#ListCustemerTpl').tmpl(data).appendTo('#listCustemers');
 
             //hideAllPopOver();
         }, error: function (e) {
@@ -353,25 +342,21 @@ function getLastCustemer() {
 // Search By Name Or Mobile Number
 
 
-$(".searchClassType").keyup(function () {
+$("#searchID").keyup(function () {
 
 
     //alert($('.searchClassType').text()+", "+$('.btn-select2').text());
 
 
-    if ($(this).val().length == 0) {
-        displayListMenu(false);
+    var inputSearchID = $("#searchID").val();
 
+    if (inputSearchID.length == 0) {
+        displayListMenu(false);
 
         return false;
     }
 
-
-    var name = $(this).attr("dataSearch");
-    var val = $(this).val();
-    var dataObj = {};
-    dataObj[name] = value;
-    dataObj['by'] = $("#searchBy").val();
+    var dataObj = {'c': inputSearchID, 'by': $("#searchBy").val()};
 
 
     if ($("#searchBy").val() == 's') {
@@ -391,7 +376,7 @@ $(".searchClassType").keyup(function () {
     }
 
 
-    $("#ListItems").html($LoadingIndectior);
+    $("#ListItems").html(spinner.el);
 
     $.ajax({
         type: 'GET',
@@ -401,17 +386,8 @@ $(".searchClassType").keyup(function () {
         success: function (data) {
 
             $("#listCustemers").html('');
+            $('#ListCustemerTpl').tmpl(data).append('#listCustemers');
 
-            var items = [];
-
-            $.each(data, function (key, val) {
-
-                items.push(ListCustemerGenrats(val));
-
-
-            });
-
-            $("#listCustemers").html(items.join(''));
             displayListMenu(true);
 
         },
@@ -425,55 +401,6 @@ $(".searchClassType").keyup(function () {
 });
 
 
-/**
- * تجميع قائمة عرض الاجهزة
- * @param v
- * @returns {string}
- */
-
-
-
-/**
- * تجميع قائمة عرض الاجهزة
- * @param v
- * @returns {string}
- */
-//function creatPanelListDevices(v) {
-//
-//    var isFinsh = 'panel-danger';
-//    var redColor = 'redColor';
-//
-//    if (v.Finsh == '1') {
-//        isFinsh = 'panel-success';
-//        redColor = 'greenColor';
-//    }
-//
-//    var h = '<div class="panel-green"><div class="panel col-sm-3 panel-default ' + isFinsh + '">';
-//    h += '<div class="panel-heading box">';
-//    h += '<p class="panel-title">' + v.NameDevices + '</p>';
-//    h += '<a data-poload="json/devices/getInfoDevice.php?&ID=' + v.idDevices + '" data-placement="bottom" title="معلومات الجهاز" href="#' + v.idDevices + '" class="fa fa-info-circle pull-right"></a>';
-//    h += '</div>';
-//    h += '<div class="panel-body">  <div class="imgListDevices"><img  src="./imageDevices/' + v.imageUrl + '" alt="img"></div>';
-//    h += '<div class="panel-footer clearfix">';
-//    h += '<div class="pull-right">';
-//
-//    h += '<div class="btn-group">';
-//    h += '<a href="#showModel"      data-toggle="tooltip" data-placement="top" title="اضافة حالة"   onclick="showModel${idDevices + ')"  class="glyphicon  glyphicon-plus  fa-lg toolsHeader"></a>';
-//    h += '<a href="#finshDevice"    data-toggle="tooltip" data-placement="top" title="اانهاء حالة الجهاز" onclick="finshDevice${idDevices + ')" class="glyphicon  glyphicon-ok fa-lg toolsHeader"></a>';
-//    h += '<a href="#printDevice"    data-toggle="tooltip" data-placement="top" title="طباعة الفاتورة" onclick="printDevice${idDevices + ')" class="glyphicon  glyphicon-print fa-lg toolsHeader"></a>';
-//    h += '<a href="#editRefDevices" data-toggle="tooltip" data-placement="top" title="اضافة رقم المرجع" onclick="editRefDevices${idDevices + ')"  class="glyphicon  glyphicon-pushpin fa-lg toolsHeader"></a>';
-//    h += '<a href="#getStatusDevices"               data-placement="bottom" data-poload="json/getStatusDevices.php?h=true&ID=' + v.idDevices + '"  class="glyphicon  glyphicon-comment fa-lg toolsHeader"></a>';
-//    h += '<a href="#editTracNumber"               data-toggle="tooltip" data-placement="top" title="بوليصة الشحن"  onclick="editTracNumber${idDevices + ')"  class="glyphicon fa-lg glyphicon-plane toolsHeader"></a>';
-//    h += '<a href="#editMonyDevices"               data-toggle="tooltip" data-placement="top" title="تعديل مبلغ الصيانة" onclick="editMonyDevices${idDevices + ')" class="glyphicon fa-lg glyphicon-usd toolsHeader"></a>';
-//    h += '</div>';
-//    h += '</div>';
-//    h += '</div>';
-//    h += '</div>';
-//    h += '</div>';
-//    return h;
-//
-//
-//}
 
 
 /*
@@ -579,11 +506,8 @@ $(document).ready(function () {
     });
 
 
-
     getLastCustemer();
     showListDevices({q: true});
-
-
 
 
     //displayListMenu(true);
