@@ -135,7 +135,30 @@
 	overflow: auto;
 }
 
+.navbar .navbar-search .dropdown-menu {
+	min-width: 100px;
+}
 
+.dropdown-menu .label-icon {
+	margin-left: 20px;
+}
 
+.btn-outline {
+	background-color: transparent;
+	color: inherit;
+	transition: all .5s;
+}
+
+.nav.nav-center {
+	display: inline-block;
+	left: 0;
+	right: 0;
+	margin: 0;
+	float: none;
+}
+
+.navbar-inner {
+	text-align: center;
+}
 
 

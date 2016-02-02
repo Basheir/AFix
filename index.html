@@ -45,6 +45,8 @@
 
 <body class="page-header-fixed">
 <div class="overlay"></div>
+
+
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
     <h3><span class="pull-left">قائمة العملاء</span><a href="javascript:void(0);" class="pull-right" id="closeRight"><i
             class="fa fa-times"></i></a></h3>
@@ -55,7 +57,7 @@
 
 
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-    <h3><span class="pull-left">Sandra Smith</span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i
+    <h3><span class="pull-left"></span> <a href="javascript:void(0);" class="pull-right" id="closeRight2"><i
             class="fa fa-angle-right"></i></a></h3>
     <div class="slimscroll chat">
 
@@ -71,74 +73,6 @@
 <!--// Search Form Headrs-->
 
 
-<form class="search-form" action="#" method="GET">
-
-
-    <div class="input-group">
-
-
-        <input type="text" name="searchID" id="searchID" dataSearch="c"
-               class="form-control search-input searchClassType"
-               placeholder="Search...">
-        <input type="text" name="searchBy" id="searchBy" value="m" style="display:none ">
-
-                <span class="input-group-btn">
-
-
-
-
-                        <button id="labelSearch" type="button" data-container="body" id="searchPopOver"
-                                data-toggle="popover"
-                                data-placement="bottom"
-                                data-content="
-                              <div class='slimScrollDiv' style='position: relative; overflow: hidden; width: auto; height: 100%;'>
-                                <ul class='list-unstyled'>
-
-
-                                    <li>
-                                        <div class='task-icon badge '><i class='glyphicon'></i></div>
-                                        <p class='task-details'> <a onclick='setSearchBy(0);'  datas='n' href='#Name'> الاسم</a></p>
-
-                                    </li>
-
-
-                                    <li>
-                                        <div class='task-icon badge '><i class='glyphicon'></i></div>
-                                        <p class='task-details'><a onclick='setSearchBy(1);' datas='m' href='#m'> هاتف</a></p>
-
-                                    </li>
-
-
-                                    <li>
-                                        <div class='task-icon badge '><i class='glyphicon'></i></div>
-                                        <p class='task-details'><a onclick='setSearchBy(2);'  datas='s' href='#s'> سيريال</a></p>
-
-                                    </li>
-                                    <li>
-                                        <div class='task-icon badge '><i class='glyphicon'></i></div>
-                                        <p class='task-details'><a onclick='setSearchBy(3);'  datas='s' href='#s'> رقم مرجعي</a></p>
-
-                                    </li>
-
-
-                                </ul>
-                        </div>
-                                "
-
-
-                                class="btn active" aria-label="Bold">هاتف
-                        </button>
-
-                         <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-                                 type="button"><i class="fa fa-times"></i></button>
-
-
-
-                </span>
-    </div><!-- Input Group -->
-</form><!-- Search Form -->
-
-
 <main class="page-content content-wrap">
     <div class="navbar">
         <div class="navbar-inner">
@@ -150,11 +84,10 @@
             <div class="logo-box">
                 <a href="index.html" class="logo-text"><span>4Tech</span></a>
             </div><!-- Logo Box -->
-            <div class="search-button">
-                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i
-                        class="fa fa-search"></i></a>
-            </div>
+
             <div class="topmenu-outer">
+
+
                 <div class="top-menu">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
@@ -181,14 +114,77 @@
                                 </li>
                                 <li class="drop-all"><a href="#" class="text-center">اجهزة تحتاج صيانة</a></li>
                             </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i
-                                    class="fa fa-search"></i></a>
+
                         </li>
 
+
+                        <li>
+
+
+                        </li>
+
+
+                    </ul>
+
+                    <ul class="nav nav-center">
+                        <!--صندوق البحث-->
+                        <li>
+                            <div class="nav nav-justified navbar-nav" id="searchbar">
+
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group">
+
+                                        <input type="text" class="form-control" name="searchID" id="searchID">
+                                        <input type="text" class="form-control" value="n" name="searchBy" id="searchBy"
+                                               style="display: none">
+
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-search btn-success">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                                <span class="label-icon">الاسم</span>
+                                            </button>
+                                            <button type="button" class="btn btn-success dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <a href="#" datas='n'>
+                                                        <span class="glyphicon glyphicon-user"></span>
+                                                        <span class="label-icon">الاسم</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" datas='m'>
+                                                        <span class="glyphicon glyphicon-modal-window"></span>
+                                                        <span class="label-icon">هاتف</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" datas='s'>
+                                                        <span class="glyphicon  glyphicon-barcode"></span>
+                                                        <span class="label-icon">سيريال</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" datas='r'>
+                                                        <span class="glyphicon glyphicon-pushpin"></span>
+                                                        <span class="label-icon">رقم مرجعي</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </li>
+
+                        <!--صندوق البحث-->
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
 
                         <li>
                             <a href="javascript:void(0);" class="waves-effect waves-button waves-classic"
@@ -196,7 +192,10 @@
                                 <i class="menu-icon glyphicon glyphicon-user"></i>
                             </a>
                         </li>
-                    </ul><!-- Nav -->
+                    </ul>
+
+
+                    <!-- Nav -->
                 </div><!-- Top Menu -->
             </div>
         </div>
