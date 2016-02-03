@@ -38,6 +38,7 @@ foreach ($devicesList as $v) {
                             <div class="task-icon badge badge-success">'.$i.'</div>
                             <span class="pull-right" > <i onclick="deleteThisStatUs(' . $v['ID'] . ',' . $IDdevices . ');" class="icon-close closeX"></i></span>
                             <p class="task-details">' . $v['title'] . '</p>
+                            <span class="greenColor pull-right">' . date("m-d-y", strtotime($v['DateAdded'])) . '</span>
 
                     </li>
                 </ul>
