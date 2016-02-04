@@ -1,6 +1,6 @@
 <script id="DevicesListTemplate" type="x-jquery-tmpl">
 <div class="col-sm-3">
-    <div class="panel  panel-danger">
+    <div class="panel {{if Finsh==1}} panel-success{{else}}panel-danger {{/if}}">
         <div class="panel-heading">
 
             <p class="panel-title">${NameDevices}</p>
