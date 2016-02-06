@@ -11,7 +11,7 @@ include('../../config.php');
 //    $infoList = $db->where("Comment LIKE '$_POST[$p]' ");
 //
 //}
-
+ 
 $infoList = $db->get('devices');
 
 
