@@ -16,6 +16,6 @@ $infoList = $db->get('devices');
 
 
 echo $db->jsonBuilder()->get('devices', null, 'Comment');
- 
 
+ 
 ?>
