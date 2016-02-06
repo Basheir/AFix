@@ -578,7 +578,9 @@ function popupwindow ( url , title , w , h ) {
  * @param IDdevices
  */
 function showModel ( IDdevices ) {
-    notie.input ( 'اضافة الحالة' , 'Submit' , 'Cancel' , 'text' , 'الحالة:' , function ( value_entered ) {
+
+
+    notie.input ( 'اضافة الحالة' , 'Submit' , 'Cancel' , 'text' , 'الحالة' , function ( value_entered ) {
 
         $.ajax ( {
             type : "POST" ,
@@ -600,6 +602,25 @@ function showModel ( IDdevices ) {
 
 
     } , '' );
+
+
+    var options = {
+        url : "json/devices/getCommentAutoCompleat.php" ,
+
+        getValue : "Comment" ,
+
+
+        list : {
+            match : {
+                enabled : true
+            }
+        } ,
+
+        theme : "blue-light"
+    };
+
+    $ ( "input[placeholder=الحالة]" ).easyAutocomplete ( options );
+
 }
 
 
