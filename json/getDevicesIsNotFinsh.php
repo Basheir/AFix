@@ -51,12 +51,14 @@ foreach ($devicesList as $v) {
     $resultData[] = '
 
 <tr>
+        <td>' . $v['ID'] . '</td>
         <td>' . $v['NameDevices'] . '</td>
         <td>' . $v['Serial'] . '</td>
         <td>' . $v['Name'] . '</td>
         <td>' . $v['Ref'] . '</td>
         <td>' . $v['tracNumber'] . '</td>
         <td>' . $v['DateAdded'] . '</td>
+
 
 
 
@@ -85,6 +87,7 @@ foreach ($devicesList as $v) {
 
 echo '<div class="row"><table id="exported" class="table table-striped table-bordered hover"  cellspacing="0" width="100%"><thead>
       <tr>
+        <th>ID</th>
         <th>نوع الجهاز</th>
         <th>رقم تسلسلي</th>
         <th>العميل</th>
@@ -92,6 +95,7 @@ echo '<div class="row"><table id="exported" class="table table-striped table-bor
         <th>بوليصة الشحن</th>∂
         <th>تاريخ الاضافة</th>∂
         <th>ادوات</th>
+
       </tr>
     </thead>    <tbody>
 
