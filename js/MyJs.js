@@ -495,6 +495,9 @@ $ ( document ).ready ( function () {
     // تحميل التمبلت الى الصفحة الرئيسية
     $.get ( "js/tpl/tpl.html" , function ( d ) {
         $ ( "body" ).append ( d )
+
+            editDevicesType();
+
     } );
 
 
@@ -905,6 +908,155 @@ function headrTitle ( t ) {
 
 }
 
+
+
+
+
+
+/**
+ * تعديل نوع الجهاز
+ * @param id
+ */
+function  editDevicesType (id) {
+
+
+    new Spinner ().spin ( $ ( '#editDevicesTypeModal' ) );
+
+
+
+    var IDInput=$("#IDTypeDeviceTitle");
+
+    var options = {
+        url : "json/gettypeDevicesAutoCompleat.php" ,
+        theme : "blue-light" ,
+
+
+        getValue : "NameDevices" ,
+
+
+        ajaxSettings : {
+            dataType : "json" ,
+            method : "POST" ,
+            data : {
+                dataType : "json"
+            }
+        } ,
+
+        preparePostData : function ( data ) {
+            data.d = IDInput.val ();
+            return data;
+        } ,
+
+        template : {
+            type : "iconRight" ,
+            fields : {
+                iconSrc : "imageUrl"
+            }
+        } ,
+        list : {
+            maxNumberOfElements : 999 ,
+            match : {
+                enabled : false
+            } ,
+            onSelectItemEvent : function () {
+
+
+                //
+                var v = $ ( "#IDTypeDeviceTitle" ).getSelectedItemData ().ID;
+                $ ( "#IDTypeDevice" ).val ( v ).trigger ( "change" );
+
+
+            }
+        }
+    };
+
+
+
+
+
+
+
+    $('#editDevicesTypeModal').on('show.bs.modal', function (event) {
+
+
+        var button = $(event.relatedTarget) // Button that triggered the modal
+       var idDevice=button.attr('data-ID');
+        var modal = $(this)
+
+
+
+
+        $.ajax ( {
+            type : "GET" ,
+            url : 'json/devices/getInfoDeviceByID.php' ,
+            dataType : "json" ,
+
+            data : { 'ID' : idDevice} , // serializes the form's elements.
+
+            success : function ( data ) {
+
+
+
+                modal.find('#Name').val(data[0].Name);
+                modal.find('#MobileNumber').val(data[0].MobileNumber);
+                modal.find('#Serial').val(data[0].Serial);
+                modal.find('#IDTypeDeviceTitle').val(data[0].NameDevices);
+                modal.find('#Comment').val(data[0].Comment);
+                modal.find('#IDTypeDevice').val(data[0].IDTypeDevice);
+                modal.find('#IdCustemer').val(data[0].IdCustemer);
+                modal.find('#idDevices').val(data[0].idDevices);
+                modal.find('#Mony').val(data[0].Mony);
+
+
+
+
+
+
+            } ,
+            error : function ( e ) {
+                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+            }
+
+
+        } );
+
+
+        IDInput.easyAutocomplete ( options );
+
+        // IDInput.focus();
+
+    });
+    
+}
+/**
+ * حفظ تعديل الجهاز
+ */
+
+function saveEditDevices (  ) {
+    $.ajax ( {
+        type : "POST" ,
+        url : 'json/devices/editCustemerAndDevices.php' ,
+        dataType : "json" ,
+
+        data : $("#editCustemerAndDevices").serialize() , // serializes the form's elements.
+
+        success : function ( data ) {
+
+
+            notie.alert ( 1 , data.msg , 2.5 );
+
+            $('#editDevicesTypeModal').modal('toggle');
+
+
+
+        } ,
+        error : function ( e ) {
+            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        }
+
+
+    } );
+}
 
 
 

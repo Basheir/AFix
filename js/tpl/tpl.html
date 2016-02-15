@@ -3,12 +3,17 @@
     <div class="panel {{if Finsh==1}} panel-success{{else}}panel-danger {{/if}}">
         <div class="panel-heading">
 
-            <p class="panel-title">${NameDevices}</p>
+            <p   class="panel-title ">${NameDevices}</p>
 
 
-            <button type="button" data-poload=json/devices/getInfoDevice.php?&ID=${idDevices}"  data-placement="bottom"
+            <button type="button" data-poload="json/devices/getInfoDevice.php?&ID=${idDevices}"  data-placement="bottom"
                     title="" class="close" aria-label="Close" data-original-title="معلومات الجهاز"><span
                     class="fa fa-info-circle   toolsHeader"></span></button>
+
+
+
+ <button type="button"  data-toggle="modal" data-target="#editDevicesTypeModal"  data-ID="${IdCustemer}"  class="close" aria-label="Close" data-original-title="تعديل" ><span class="fa fa-pencil toolsHeader"></span></button>
+
 
 
             <span data-toggle="tooltip" data-placement="top" title="" class="badge pull-right badge-success"
@@ -89,3 +94,85 @@
 </script>
 
 
+<!--تعديل نوع  الجهاز-->
+<div class="modal fade" id="editDevicesTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">تعديل جهاز</h4>
+            </div>
+            <div class="modal-body">
+                <form id="editCustemerAndDevices" action="editCustemerAndDevices.php" method="post"
+                      class="form-horizontal">
+                    <div class="panel panel-default ">
+
+                        <div class="panel-body panel-title  clearfix">
+
+
+                            <div class="form-group">
+                                <label for="Name" class="col-sm-2 control-label">الاسم</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="Name" id="Name" placeholder="الاسم"
+                                           required>
+                                    <input type="text" name="IdCustemer" id="IdCustemer" style="display: none"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="MobileNumber" class="col-sm-2 control-label">رقم هاتف</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="MobileNumber" id="MobileNumber"
+                                           placeholder="رقم هاتف" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Serial" class="col-sm-2 control-label">Serial</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="Serial" id="Serial"
+                                           placeholder="Serial">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="IDTypeDeviceTitle" class="col-sm-2 control-label">نوع جهاز</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="IDTypeDeviceTitle"
+                                           style="width: 420px;" id="IDTypeDeviceTitle"
+                                           placeholder="نوع الجهاز" required>
+                                    <input type="text" name="IDTypeDevice" id="IDTypeDevice" style="display: none"/>
+                                    <input type="text" name="idDevices" id="idDevices" style="display: none"/>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Comment" class="col-sm-2 control-label">ملاحظة</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="Comment" id="Comment"
+                                           placeholder="ملاحظة">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Comment" class="col-sm-2 control-label">مبلغ</label>
+                                <div class="col-sm-10">
+                                    <input type="input" class="form-control" name="Mony" value="0" id="Mony"
+                                           placeholder="مبلغ">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" onclick="saveEditDevices();" class="btn btn-primary">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
