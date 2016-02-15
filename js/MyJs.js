@@ -920,7 +920,7 @@ function headrTitle ( t ) {
 function  editDevicesType (id) {
 
 
-    new Spinner ().spin ( $ ( '#editDevicesTypeModal' ) );
+    // new Spinner ().spin ( $ ( '#editDevicesTypeModal' ) );
 
 
 
