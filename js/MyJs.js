@@ -809,6 +809,17 @@ function showDevicesIsNotFinsh () {
 
         $ ( '#exported' ).DataTable ();
 
+
+        $ ( "p[data-ID]" ).each ( function ( index ) {
+
+
+            var id = $ ( this ).attr ( 'data-ID' );
+
+            $ ( this ).load ( "json/getStatusDevices.php?ID=" + id );
+
+        } );
+
+
     } );
 
 

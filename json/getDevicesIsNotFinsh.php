@@ -32,6 +32,7 @@ $db->join("typedevices", "devices.IDTypeDevice = typedevices.ID", "LEFT");
 $db->join("coustemers", "devices.IdCustemer = coustemers.ID", "LEFT");
 
 
+
 $devicesList = $db->where('devices.Finsh', '0');
 $db->orderBy("devices.Finsh", "asc");
 $db->orderBy("devices.DateAdded", "asc");
@@ -52,7 +53,7 @@ foreach ($devicesList as $v) {
 
 <tr>
         <td>' . $v['ID'] . '</td>
-        <td>' . $v['NameDevices'] . '</td>
+        <td>' . $v['NameDevices'] . '<p data-ID="' . $v['ID'] . '">-</p></td>
         <td>' . $v['Serial'] . '</td>
         <td>' . $v['Name'] . '</td>
         <td>' . $v['Ref'] . '</td>
@@ -88,7 +89,8 @@ foreach ($devicesList as $v) {
 echo '<div class="row"><table id="exported" class="table table-striped table-bordered hover"  cellspacing="0" width="100%"><thead>
       <tr>
         <th>ID</th>
-        <th>نوع الجهاز</th>
+        <th>نوع الجهاز
+        </th>
         <th>رقم تسلسلي</th>
         <th>العميل</th>
         <th>رقم المرجع</th>
