@@ -517,6 +517,17 @@ $ ( document ).ready ( function () {
     } );
 
 
+    // اضافة للمهم
+    $.getJSON ( "json/devices/getImportantDevices.php" , function ( data ) {
+        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuImportant' );
+        $ ( "#dropdownMenuBdgImportant" ).html ( data.length );
+    } );
+
+
+    
+    
+
+
     $ ( document ).ajaxStop ( function () {
 
         spinner.stop ();
@@ -795,6 +806,33 @@ function editMonyDevices ( IDdevices ) {
 
     } , '' );
 
+
+}
+
+
+/**
+ * تعديل اهمية الجهاز
+ * @param IDdevices
+ */
+function editImportantDevices ( IDdevices ) {
+
+    $.ajax ( {
+        type : "POST" ,
+        url : 'json/devices/editImportantDevices.php' ,
+        dataType : "json" ,
+
+        data : { 'ID' : IDdevices } , // serializes the form's elements.
+
+        success : function ( data ) {
+
+            notie.alert ( data.idMsg , data.msg , 2.5 );
+        } ,
+        error : function ( e ) {
+            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        }
+
+
+    } );
 
 }
 
