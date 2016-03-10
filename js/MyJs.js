@@ -812,7 +812,7 @@ function editMonyDevices ( IDdevices ) {
 
 /**
  * تعديل اهمية الجهاز
- * @param IDdevices
+ * @param IDdevices  رقم الجهاز
  */
 function editImportantDevices ( IDdevices ) {
 
