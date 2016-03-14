@@ -42,7 +42,7 @@ $data = Array(
 
 $db->where('idDevices', (int)$_POST['ID']);
 $infoList = $db->update('devices', $data, 1);
-
+ 
 
 if ($infoList) {
 
