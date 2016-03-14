@@ -524,7 +524,21 @@ $ ( document ).ready ( function () {
     } );
 
 
-    
+    // اضافة الاجهزة اللتي وصلت المعرض
+    $.getJSON ( "json/devices/getInShowRoomDevices.php" , function ( data ) {
+        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuInshowRoom' );
+        $ ( "#dropdownMenuBdgInshowRoom" ).html ( data.length );
+    } );
+
+
+    //                             <!--اكبر من تاريخ ثلاثون يوم -->
+    $.getJSON ( "json/devices/getMaxDateDevices.php" , function ( data ) {
+        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuMaxDate' );
+        $ ( "#dropdownMenuBdgMaxDate" ).html ( data.length );
+    } );
+
+
+
     
 
 
@@ -835,6 +849,40 @@ function editImportantDevices ( IDdevices ) {
     } );
 
 }
+
+
+/**
+ *  وصل المعرض الجهاز
+ * @param IDdevices  رقم الجهاز
+ */
+function editInShowRoomDevices ( IDdevices ) {
+
+    $.ajax ( {
+        type : "POST" ,
+        url : 'json/devices/editInShowRoomDevices.php' ,
+        dataType : "json" ,
+
+        data : { 'ID' : IDdevices } , // serializes the form's elements.
+
+        success : function ( data ) {
+
+            notie.alert ( data.idMsg , data.msg , 2.5 );
+        } ,
+        error : function ( e ) {
+            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        }
+
+
+    } );
+
+}
+
+
+
+
+
+
+
 
 
 /**
