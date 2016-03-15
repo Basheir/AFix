@@ -519,21 +519,21 @@ $ ( document ).ready ( function () {
 
     // اضافة للمهم
     $.getJSON ( "json/devices/getImportantDevices.php" , function ( data ) {
-        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuImportant' );
+        $ ( '#ImportantTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuImportant' );
         $ ( "#dropdownMenuBdgImportant" ).html ( data.length );
     } );
 
 
     // اضافة الاجهزة اللتي وصلت المعرض
     $.getJSON ( "json/devices/getInShowRoomDevices.php" , function ( data ) {
-        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuInshowRoom' );
+        $ ( '#InShowRoomTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuInshowRoom' );
         $ ( "#dropdownMenuBdgInshowRoom" ).html ( data.length );
     } );
 
 
     //                             <!--اكبر من تاريخ ثلاثون يوم -->
     $.getJSON ( "json/devices/getMaxDateDevices.php" , function ( data ) {
-        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuMaxDate' );
+        $ ( '#MaxDateTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuMaxDate' );
         $ ( "#dropdownMenuBdgMaxDate" ).html ( data.length );
     } );
 

@@ -92,9 +92,46 @@
  </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
  <p class="task-details">${type}</p></a>
  </li>
+</script>
 
+
+<!-- تمبلت الخاص الجهاز وصل المعرض -->
+
+<script id="ImportantTpl" type="x-jquery-tmpl">
+<li onclick=showListDevices({t:'${IDTypeDevice}',by:'t',Parm:'Important'}) > <a href="#${type}">${cusName}<div class="task-icon badge badge-success">
+<i class="fa fa-tablet"></i>
+ </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
+ <p class="task-details">${type}</p></a>
+ </li>
 
 </script>
+
+
+<!-- تمبلت مهم  -->
+
+<script id="InShowRoomTpl" type="x-jquery-tmpl">
+<li onclick=showListDevices({t:'${IDTypeDevice}',by:'t',Parm:'InShowRoom'}) > <a href="#${type}">${cusName}<div class="task-icon badge badge-success">
+<i class="fa fa-tablet"></i>
+ </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
+ <p class="task-details">${type}</p></a>
+ </li>
+
+</script>
+
+
+<!-- تمبلت الخاص  -->
+
+<script id="MaxDateTpl" type="x-jquery-tmpl">
+<li onclick=showListDevices({t:'${IDTypeDevice}',by:'t',Parm:'MaxDate'}) > <a href="#${type}"><div class="task-icon badge badge-success">
+<i class="fa fa-tablet"></i>
+ </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
+ <p class="task-details">${type}</p></a>
+ </li>
+
+</script>
+
+
+
 
 
 <!-- تمبلت الخاص بعرض العملاء -->

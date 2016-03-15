@@ -6,6 +6,7 @@ header('Content-Type: application/json');
 
 $resultData = array();
 @$searchBy = $_GET['by'];
+@$Parm = $_GET['Parm'];
 
 include('../../config.php');
 
@@ -36,6 +37,25 @@ if ($searchBy == 't') {
 if ($searchBy == 'ID') {
     $db->where('IdCustemer', (int)$_GET['ID']);
 }
+
+
+if ($Parm == 'InShowRoom') {
+    $db->where('InShowRoomDevices', '1');
+}
+
+
+if ($Parm == 'MaxDate') {
+    $db->where('DATEDIFF(NOW(),devices.DateAdded)', 25, ">=");
+}
+
+
+if ($Parm == 'Important') {
+    $db->where('important', '1');
+}
+
+
+
+
 
 
 $db->orderBy("devices.Finsh", "asc");

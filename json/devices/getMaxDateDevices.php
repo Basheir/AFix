@@ -21,7 +21,7 @@ FROM
   devices
   INNER JOIN typedevices ON (devices.IDTypeDevice = typedevices.ID)
 
-  WHERE   DATE(devices.DateAdded) > ' . $maxDate . ' AND devices.Finsh="1"
+  WHERE   DATE(devices.DateAdded) > ' . $maxDate . ' AND  devices.Finsh !="1"
 
 
 GROUP BY
