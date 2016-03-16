@@ -15,106 +15,106 @@
 // عند التركيز على نوع الجهاز تعرض القائمة
 
 
-function AddNewDevices () {
+function AddNewDevices() {
 
 
-    headrTitle ( 'الاجهزة' );
+    headrTitle('الاجهزة');
 
-    function escapeTags ( str ) {
-        return String ( str )
-            .replace ( /&/g , '&amp;' )
-            .replace ( /"/g , '&quot;' )
-            .replace ( /'/g , '&#39;' )
-            .replace ( /</g , '&lt;' )
-            .replace ( />/g , '&gt;' );
+    function escapeTags(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
     }
 
 
-    $ ( "#Contener" ).load ( "form/newDevices.html" , function () {
+    $("#Contener").load("form/newDevices.html", function () {
 
 
-        $ ( "form#addNewDevicesForm" ).submit ( function () {
+        $("form#addNewDevicesForm").submit(function () {
 
 
-            $.ajax ( {
-                type : 'POST' ,
-                dataType : "json" ,
+            $.ajax({
+                type: 'POST',
+                dataType: "json",
                 // make sure you respect the same origin policy with this url:
                 // http://en.wikipedia.org/wiki/Same_origin_policy
-                url : 'json/insertNewDevices.php' ,
+                url: 'json/insertNewDevices.php',
 
-                data : $ ( "form#addNewDevicesForm" ).serialize () ,
+                data: $("form#addNewDevicesForm").serialize(),
 
 
-                success : function ( data ) {
+                success: function (data) {
                     //called when successful
-                    notie.alert ( data.idMsg , data.msg , 2.5 );
+                    notie.alert(data.idMsg, data.msg, 2.5);
 
-                } ,
-                error : function ( e ) {
-                    notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+                },
+                error: function (e) {
+                    notie.alert(3, 'Error Respnse Paramter', 2.5);
                 }
 
 
-            } );
+            });
 
             return false;
-        } );
+        });
 
 
-        var btn = document.getElementById ( 'uploadBtn' ) ,
-            progressBar = document.getElementById ( 'progressBar' ) ,
-            progressOuter = document.getElementById ( 'progressOuter' ) ,
-            msgBox = document.getElementById ( 'msgBox' );
+        var btn = document.getElementById('uploadBtn'),
+            progressBar = document.getElementById('progressBar'),
+            progressOuter = document.getElementById('progressOuter'),
+            msgBox = document.getElementById('msgBox');
 
-        var uploader = new ss.SimpleUpload ( {
-            button : btn ,
-            url : 'file_upload.php' ,
-            name : 'uploadfile' ,
-            multipart : true ,
-            hoverClass : 'hover' ,
-            focusClass : 'focus' ,
-            responseType : 'json' ,
-            startXHR : function () {
+        var uploader = new ss.SimpleUpload({
+            button: btn,
+            url: 'file_upload.php',
+            name: 'uploadfile',
+            multipart: true,
+            hoverClass: 'hover',
+            focusClass: 'focus',
+            responseType: 'json',
+            startXHR: function () {
                 progressOuter.style.display = 'block'; // make progress bar visible
-                this.setProgressBar ( progressBar );
-            } ,
-            onSubmit : function () {
+                this.setProgressBar(progressBar);
+            },
+            onSubmit: function () {
                 msgBox.innerHTML = ''; // empty the message box
                 btn.innerHTML = 'Uploading...'; // change button text to "Uploading..."
-            } ,
-            onComplete : function ( filename , response ) {
+            },
+            onComplete: function (filename, response) {
                 btn.innerHTML = 'Choose Another File';
                 progressOuter.style.display = 'none'; // hide progress bar when upload is completed
 
-                if ( ! response ) {
+                if (!response) {
                     msgBox.innerHTML = 'Unable to upload file';
                     return;
                 }
 
-                if ( response.success === true ) {
-                    $ ( "#ImageUrl" ).val ( escapeTags ( filename ) )
+                if (response.success === true) {
+                    $("#ImageUrl").val(escapeTags(filename))
 
 
-                    msgBox.innerHTML = '<strong>' + escapeTags ( filename ) + '</strong>' + ' successfully uploaded.';
+                    msgBox.innerHTML = '<strong>' + escapeTags(filename) + '</strong>' + ' successfully uploaded.';
 
                 } else {
-                    if ( response.msg ) {
-                        msgBox.innerHTML = escapeTags ( response.msg );
+                    if (response.msg) {
+                        msgBox.innerHTML = escapeTags(response.msg);
 
                     } else {
                         msgBox.innerHTML = 'An error occurred and the upload failed.';
                     }
                 }
-            } ,
-            onError : function () {
+            },
+            onError: function () {
                 progressOuter.style.display = 'none';
                 msgBox.innerHTML = 'Unable to upload file';
             }
-        } );
+        });
 
 
-    } );
+    });
 
 
 }
@@ -124,39 +124,39 @@ function AddNewDevices () {
  * add new custemer
  * @constructor
  */
-function AddNewCustemer () {
+function AddNewCustemer() {
 
 
-    headrTitle ( 'العملاء' );
-    $ ( "#Contener" ).load ( "form/newCustemer.html" , function () {
+    headrTitle('العملاء');
+    $("#Contener").load("form/newCustemer.html", function () {
 
 
         var options = {
-            url : "json/getCoustemersAutoCompleat.php" ,
+            url: "json/getCoustemersAutoCompleat.php",
 
-            getValue : "Name" ,
-            theme : "blue-light" ,
-            ajaxSettings : {
-                dataType : "json" ,
-                method : "POST" ,
-                data : {
-                    dataType : "json"
+            getValue: "Name",
+            theme: "blue-light",
+            ajaxSettings: {
+                dataType: "json",
+                method: "POST",
+                data: {
+                    dataType: "json"
                 }
-            } ,
+            },
 
-            preparePostData : function ( data ) {
-                data.c = $ ( "#Name" ).val ();
+            preparePostData: function (data) {
+                data.c = $("#Name").val();
                 return data;
-            } ,
-            list : {
-                match : {
-                    enabled : false
-                } ,
-                onSelectItemEvent : function () {
+            },
+            list: {
+                match: {
+                    enabled: false
+                },
+                onSelectItemEvent: function () {
 
 
-                    var vals = $ ( "#Name" ).getSelectedItemData ().MobileNumber;
-                    $ ( "#MobileNumber" ).val ( vals ).trigger ( "change" );
+                    var vals = $("#Name").getSelectedItemData().MobileNumber;
+                    $("#MobileNumber").val(vals).trigger("change");
 
 
                 }
@@ -164,123 +164,123 @@ function AddNewCustemer () {
         };
 
 
-        $ ( "#Name" ).easyAutocomplete ( options );
+        $("#Name").easyAutocomplete(options);
 
 
         var options = {
-            url : "json/getCoustemersAutoCompleat.php" ,
-            theme : "blue-light" ,
+            url: "json/getCoustemersAutoCompleat.php",
+            theme: "blue-light",
 
 
-            getValue : "MobileNumber" ,
+            getValue: "MobileNumber",
 
-            list : {
-                match : {
-                    enabled : false
-                } ,
-                onSelectItemEvent : function () {
+            list: {
+                match: {
+                    enabled: false
+                },
+                onSelectItemEvent: function () {
 
 
-                    var vals = $ ( "#MobileNumber" ).getSelectedItemData ().Name;
-                    $ ( "#Name" ).val ( vals ).trigger ( "change" );
+                    var vals = $("#MobileNumber").getSelectedItemData().Name;
+                    $("#Name").val(vals).trigger("change");
 
 
                 }
             }
         };
 
-        $ ( "#MobileNumber" ).easyAutocomplete ( options );
+        $("#MobileNumber").easyAutocomplete(options);
 
 
         // عرض نوع الاجهزة المتوفرة
 
 
         var options = {
-            url : "json/gettypeDevicesAutoCompleat.php" ,
-            theme : "blue-light" ,
+            url: "json/gettypeDevicesAutoCompleat.php",
+            theme: "blue-light",
 
 
-            getValue : "NameDevices" ,
+            getValue: "NameDevices",
 
 
-            ajaxSettings : {
-                dataType : "json" ,
-                method : "POST" ,
-                data : {
-                    dataType : "json"
+            ajaxSettings: {
+                dataType: "json",
+                method: "POST",
+                data: {
+                    dataType: "json"
                 }
-            } ,
+            },
 
-            preparePostData : function ( data ) {
-                data.d = $ ( "#IDTypeDeviceTitle" ).val ();
+            preparePostData: function (data) {
+                data.d = $("#IDTypeDeviceTitle").val();
                 return data;
-            } ,
+            },
 
-            template : {
-                type : "iconRight" ,
-                fields : {
-                    iconSrc : "imageUrl"
+            template: {
+                type: "iconRight",
+                fields: {
+                    iconSrc: "imageUrl"
                 }
-            } ,
-            list : {
-                maxNumberOfElements : 99 ,
-                match : {
-                    enabled : false
-                } ,
-                onSelectItemEvent : function () {
+            },
+            list: {
+                maxNumberOfElements: 99,
+                match: {
+                    enabled: false
+                },
+                onSelectItemEvent: function () {
 
 
                     //
-                    var v = $ ( "#IDTypeDeviceTitle" ).getSelectedItemData ().ID;
-                    $ ( "#IDTypeDevice" ).val ( v ).trigger ( "change" );
+                    var v = $("#IDTypeDeviceTitle").getSelectedItemData().ID;
+                    $("#IDTypeDevice").val(v).trigger("change");
 
 
                 }
             }
         };
-        $ ( "#IDTypeDeviceTitle" ).easyAutocomplete ( options );
+        $("#IDTypeDeviceTitle").easyAutocomplete(options);
 
 
         /**
          * اضافة عميل جديد مع جهاز
          */
 
-        $ ( "form#addNewCustemerForm" ).submit ( function () {
+        $("form#addNewCustemerForm").submit(function () {
 
 
-            $.ajax ( {
-                type : 'POST' ,
-                dataType : "json" ,
+            $.ajax({
+                type: 'POST',
+                dataType: "json",
                 // make sure you respect the same origin policy with this url:
                 // http://en.wikipedia.org/wiki/Same_origin_policy
-                url : 'json/insertNewCustemer.php' ,
+                url: 'json/insertNewCustemer.php',
 
-                data : $ ( "form#addNewCustemerForm" ).serialize () ,
-                success : function ( data ) {
+                data: $("form#addNewCustemerForm").serialize(),
+                success: function (data) {
 
-                    if ( data.suc === true ) {
-                        notie.alert ( 1 , 'تم العملية بنجاح!' , 2.5 );
+                    if (data.suc === true) {
+                        notie.alert(1, 'تم العملية بنجاح!', 2.5);
 
-                        console.log ( 'Rest addNewCustemer Form' );
-                        $ ( '#addNewCustemerForm' )[ 0 ].reset ();
+                        console.log('Rest addNewCustemer Form');
+                        $('#addNewCustemerForm')[0].reset();
 
 
-                        popupwindow ( "printInVoice.php?d=" + data.idNewDevices , "printInVoice" , 400 , 600 );
-                        getLastCustemer ();
+                        popupwindow("printInVoice.php?d=" + data.idNewDevices, "printInVoice", 400, 600);
+                        getLastCustemer();
                     }
 
                     else {
-                        notie.alert ( 3 , data.msg , 2.5 );
+                        notie.alert(3, data.msg, 2.5);
                     }
 
                 }
-            } );
+            });
 
             return false;
-        } );
+        });
 
 
-    } );
+    });
 
 
 }
@@ -292,7 +292,7 @@ function AddNewCustemer () {
  * @constructor
  */
 
-function ListCustemerGenrats ( val ) {
+function ListCustemerGenrats(val) {
 
     var v = '';
 
@@ -312,25 +312,25 @@ function ListCustemerGenrats ( val ) {
 //<a href="javascript:void(0);" class="showRight2"><img src="style/assets/images/avatar2.png" alt=""><span>Sandra smith<small>Hi! How're you?</small></span></a>
 //
 
-function getLastCustemer () {
+function getLastCustemer() {
 
 
-    $.ajax ( {
-        type : 'GET' ,
-        dataType : "json" ,
-        url : 'json/getLastCoustemers.php' ,
-        success : function ( data ) {
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        url: 'json/getLastCoustemers.php',
+        success: function (data) {
 
-            $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
+            $('#ListCustemerTpl').tmpl(data).appendTo('#listCustemers');
 
-            $ ( "#cd-cart" ).waitMe ( 'hide' );
+            $("#cd-cart").waitMe('hide');
 
             //hideAllPopOver();
-        } , error : function ( e ) {
-            notie.alert ( 3 , 'لايمكن تحميل قائمة العملاء' , 2.5 );
+        }, error: function (e) {
+            notie.alert(3, 'لايمكن تحميل قائمة العملاء', 2.5);
 
         }
-    } );
+    });
 
 
 }
@@ -338,138 +338,133 @@ function getLastCustemer () {
 
 // بحث عن عميل
 
-function searchForm () {
+function searchForm() {
 
-    var inputSearchID = $ ( "#searchID" ).val ();
+    var inputSearchID = $("#searchID").val();
 
-    if ( inputSearchID.length == 0 ) {
-        displayListMenu ( false );
+    if (inputSearchID.length == 0) {
+        displayListMenu(false);
 
         return false;
     }
 
-    var dataObj = { 'c' : inputSearchID , 'by' : $ ( "#searchBy" ).val () };
+    var dataObj = {'c': inputSearchID, 'by': $("#searchBy").val()};
 
 
-    if ( $ ( "#searchBy" ).val () == 's' ) {
+    if ($("#searchBy").val() == 's') {
 
 
-        showListDevices ( dataObj );
-
-        return;
-    }
-
-    if ( $ ( "#searchBy" ).val () == 'r' ) {
-
-        showListDevices ( dataObj );
+        showListDevices(dataObj);
 
         return;
     }
 
+    if ($("#searchBy").val() == 'r') {
 
-    $ ( '#listCustemers' ).waitMe ( { effect : 'bounce' } );
+        showListDevices(dataObj);
 
-
-    $.ajax ( {
-        type : 'GET' ,
-        dataType : "json" ,
-        url : 'json/getCoustemers.php' ,
-        data : dataObj ,
-        success : function ( data ) {
-
-            $ ( "#listCustemers" ).empty ();
-            $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
+        return;
+    }
 
 
-            displayListMenu ( true );
+    $('#listCustemers').waitMe({effect: 'bounce'});
 
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        url: 'json/getCoustemers.php',
+        data: dataObj,
+        success: function (data) {
+
+            $("#listCustemers").empty();
+            $('#ListCustemerTpl').tmpl(data).appendTo('#listCustemers');
+
+
+            displayListMenu(true);
+
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
-    } );
+    });
 
 }
-
 
 
 /*
  عرض قائمة الاجهزة
  */
-function showListDevices ( d ) {
+function showListDevices(d) {
 
 
-    if ( d === undefined ) {
+    if (d === undefined) {
 
     }
 
 
-    headrTitle ( 'اجهزة العملاء' );
+    headrTitle('اجهزة العملاء');
 
-    $ ( "#Contener" ).empty ();
+    $("#Contener").empty();
 
-    $ ( "#Contener" ).waitMe ( { effect : 'bounce' } );
+    $("#Contener").waitMe({effect: 'bounce'});
     ;
 
 
-    $.getJSON ( "json/devices/getListDevices.php?" + $.param ( d ) , function ( data ) {
+    $.getJSON("json/devices/getListDevices.php?" + $.param(d), function (data) {
 
 
-        $ ( "#Contener" ).empty ();
-        $ ( '#DevicesListTemplate' ).tmpl ( data ).appendTo ( '#Contener' );
+        $("#Contener").empty();
+        $('#DevicesListTemplate').tmpl(data).appendTo('#Contener');
 
 
         //console.log($('#DevicesListTemplate'));
 
 
+        $('*[data-poload]').popover({
+            "html": true,
+            placement: $(this).attr('data-placement'),
+            title: '<span  class="text-info "><strong>حالة الجهاز</strong></span>' +
+            '<a href="#Close"><i class="fa fa-times-circle fa-2 pull-right closeX"></i></a>',
 
-
-
-        $ ( '*[data-poload]' ).popover ( {
-            "html" : true ,
-            placement : $ ( this ).attr ( 'data-placement' ) ,
-            title : '<span  class="text-info "><strong>حالة الجهاز</strong></span>' +
-            '<a href="#Close"><i class="fa fa-times-circle fa-2 pull-right closeX"></i></a>' ,
-
-            "content" : function () {
-                var div_id = "tmp-id-" + $.now ();
-                return details_in_popup ( $ ( this ).attr ( 'data-poload' ) , div_id );
+            "content": function () {
+                var div_id = "tmp-id-" + $.now();
+                return details_in_popup($(this).attr('data-poload'), div_id);
             }
-        } );
+        });
 
 
-        function details_in_popup ( link , div_id ) {
+        function details_in_popup(link, div_id) {
 
 
-            var div = $ ( '<div/>' , {
-                id : div_id ,
-                text : 'Loading!'
-            } );
+            var div = $('<div/>', {
+                id: div_id,
+                text: 'Loading!'
+            });
 
 
-            $ ( div ).waitMe ( { effect : 'bounce' } );
+            $(div).waitMe({effect: 'bounce'});
 
 
-            $.ajax ( {
-                url : link ,
-                success : function ( response ) {
-                    $ ( '#' + div_id ).html ( response );
-                    $ ( "#Contener" ).waitMe ( 'hide' );
+            $.ajax({
+                url: link,
+                success: function (response) {
+                    $('#' + div_id).html(response);
+                    $("#Contener").waitMe('hide');
                 }
-            } );
-            return $ ( div ).waitMe ( { effect : 'bounce' } );
-
+            });
+            return $(div).waitMe({effect: 'bounce'});
 
 
         }
 
 
-        $ ( '[data-toggle="tooltip"]' ).tooltip ();
+        $('[data-toggle="tooltip"]').tooltip();
 
 
         return false;
-    } );
+    });
 
 
 }
@@ -478,14 +473,13 @@ function showListDevices ( d ) {
 /*
  عرض مراحل تسليم الجهاز
  */
-function loadStatUsBar ( id ) {
+function loadStatUsBar(id) {
 
 
-    $ ( '#resultStatusBar' ).waitMe ( { effect : 'bounce' } );
+    $('#resultStatusBar').waitMe({effect: 'bounce'});
 
 
-
-    $ ( "#resultStatusBar" ).load ( "json/getstatUsBarDevices.php?ID=" + id );
+    $("#resultStatusBar").load("json/getstatUsBarDevices.php?ID=" + id);
 
 
 }
@@ -493,78 +487,56 @@ function loadStatUsBar ( id ) {
 /**
  *
  */
-$ ( document ).ready ( function () {
+$(document).ready(function () {
 
-    console.log ( "ready!" );
+    console.log("ready!");
 
 
     // تحميل التمبلت الى الصفحة الرئيسية
-    $.get ( "js/tpl/tpl.html" , function ( d ) {
-        $ ( "body" ).append ( d )
+    $.get("js/tpl/tpl.html", function (d) {
+        $("body").append(d)
 
-            editDevicesType();
+        editDevicesType();
 
-    } );
+    });
 
 
-    getLastCustemer ();
-    showListDevices ( { q : true } );
+    getLastCustemer();
+    showListDevices({q: true});
 
 
     //displayListMenu(true);
 
-    $ ( '[data-toggle="popover"]' ).popover ( { html : true } );
+    $('[data-toggle="popover"]').popover({html: true});
 
 
     // اضافة للبادج
-    $ ( "#loadImportant" ).waitMe ( { effect : 'pulse' , sizeW : '10px' , sizeH : '10px' } );
-    $ ( "#loadInshowRoom" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
-    $ ( "#loadMaxDate" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
-    $ ( "#loadNotfctionBdg" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
+    $("#loadImportant").waitMe({effect: 'pulse', sizeW: '10px', sizeH: '10px'});
+    $("#loadInshowRoom").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
+    $("#loadMaxDate").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
+    $("#loadNotfctionBdg").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
 
 
+    $.getJSON("json/devices/getCollectionDevices.php", function (data) {
+        $('#dropdownMenuNotfctionTpl').tmpl(data).appendTo('#dropdownMenuNotfction');
+        $("#dropdownMenuNotfctionBdg").html(data.length);
+        $("#loadNotfctionBdg").waitMe('hide');
+    });
 
 
-    $.getJSON ( "json/devices/getCollectionDevices.php" , function ( data ) {
-        $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuNotfction' );
-        $ ( "#dropdownMenuNotfctionBdg" ).html ( data.length );
-        $ ( "#loadNotfctionBdg" ).waitMe ( 'hide' );
-    } );
-
-
-    // اضافة للمهم
-    $.getJSON ( "json/devices/getImportantDevices.php" , function ( data ) {
-        $ ( '#ImportantTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuImportant' );
-        $ ( "#dropdownMenuBdgImportant" ).html ( data.length );
-
-
-        $ ( "#loadImportant" ).waitMe ( 'hide' );
-
-
-    } );
-
-
-    // اضافة الاجهزة اللتي وصلت المعرض
-    $.getJSON ( "json/devices/getInShowRoomDevices.php" , function ( data ) {
-        $ ( '#InShowRoomTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuInshowRoom' );
-        $ ( "#dropdownMenuBdgInshowRoom" ).html ( data.length );
-        $ ( "#loadInshowRoom" ).waitMe ( 'hide' );
-    } );
+    ImportantDevicesNotF();
+    InShowRoomNotF();
 
 
     //                             <!--اكبر من تاريخ ثلاثون يوم -->
-    $.getJSON ( "json/devices/getMaxDateDevices.php" , function ( data ) {
-        $ ( '#MaxDateTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuMaxDate' );
-        $ ( "#dropdownMenuBdgMaxDate" ).html ( data.length );
-        $ ( "#loadMaxDate" ).waitMe ( 'hide' );
-    } );
+    $.getJSON("json/devices/getMaxDateDevices.php", function (data) {
+        $('#MaxDateTpl').tmpl(data).appendTo('#dropdownMenuMaxDate');
+        $("#dropdownMenuBdgMaxDate").html(data.length);
+        $("#loadMaxDate").waitMe('hide');
+    });
 
 
-
-    
-
-
-    $ ( document ).ajaxStop ( function () {
+    $(document).ajaxStop(function () {
 
         // waitMe({ effect : 'bounce', text : '', bg : '#FFFFFF', color : '#000', sizeW : '', sizeH : '', source : '' });
 
@@ -575,35 +547,35 @@ $ ( document ).ready ( function () {
      * بحث عن طريق الاسم او رقم الهاتف او سيريال الجهاز
      */
 
-    $ ( "#searchID" ).keyup ( function () {
+    $("#searchID").keyup(function () {
 
-        searchForm ();
-    } );
+        searchForm();
+    });
 
 
     //  تفعيل البحث
 
-    $ ( ".input-group-btn .dropdown-menu li a" ).click ( function () {
+    $(".input-group-btn .dropdown-menu li a").click(function () {
 
-        var selText = $ ( this ).html ();
-        var searchBy = $ ( "#searchBy" ).val ( $ ( this ).attr ( 'datas' ) );
+        var selText = $(this).html();
+        var searchBy = $("#searchBy").val($(this).attr('datas'));
 
-        $ ( this ).parents ( '.input-group-btn' ).find ( '.btn-search' ).html ( selText );
+        $(this).parents('.input-group-btn').find('.btn-search').html(selText);
 
-        searchForm ();
+        searchForm();
 
-    } );
+    });
 
 
-} );
+});
 
 
 /**
  * طباعة الفاتورة
  * @param ID  رقم الجهاز
  */
-function printDevice ( ID ) {
-    popupwindow ( "printInVoice.php?d=" + ID , "printInVoice" , 400 , 600 );
+function printDevice(ID) {
+    popupwindow("printInVoice.php?d=" + ID, "printInVoice", 400, 600);
 
 }
 
@@ -616,10 +588,10 @@ function printDevice ( ID ) {
  * @param h
  * @returns {Window}
  */
-function popupwindow ( url , title , w , h ) {
+function popupwindow(url, title, w, h) {
     var left = (screen.width / 2) - (w / 2);
     var top = (screen.height / 2) - (h / 2);
-    return window.open ( url , title , 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left );
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 }
 
 
@@ -627,49 +599,49 @@ function popupwindow ( url , title , w , h ) {
  * اضافة حالة الجهاز
  * @param IDdevices
  */
-function showModel ( IDdevices ) {
+function showModel(IDdevices) {
 
 
-    notie.input ( 'اضافة الحالة' , 'Submit' , 'Cancel' , 'text' , 'الحالة' , function ( value_entered ) {
+    notie.input('اضافة الحالة', 'Submit', 'Cancel', 'text', 'الحالة', function (value_entered) {
 
-        $.ajax ( {
-            type : "POST" ,
-            url : 'json/insertStatusDevices.php' ,
-            dataType : "json" ,
+        $.ajax({
+            type: "POST",
+            url: 'json/insertStatusDevices.php',
+            dataType: "json",
 
-            data : { 'ID' : IDdevices , title : value_entered } , // serializes the form's elements.
+            data: {'ID': IDdevices, title: value_entered}, // serializes the form's elements.
 
-            success : function ( data ) {
+            success: function (data) {
 
-                notie.alert ( data.idMsg , data.msg , 2.5 );
-            } ,
-            error : function ( e ) {
-                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+                notie.alert(data.idMsg, data.msg, 2.5);
+            },
+            error: function (e) {
+                notie.alert(3, 'Error Respnse Paramter', 2.5);
             }
 
 
-        } );
+        });
 
 
-    } , '' );
+    }, '');
 
 
     var options = {
-        url : "json/devices/getCommentAutoCompleat.php" ,
+        url: "json/devices/getCommentAutoCompleat.php",
 
-        getValue : "Comment" ,
+        getValue: "Comment",
 
 
-        list : {
-            match : {
-                enabled : true
+        list: {
+            match: {
+                enabled: true
             }
-        } ,
+        },
 
-        theme : "blue-light"
+        theme: "blue-light"
     };
 
-    $ ( "input[placeholder=الحالة]" ).easyAutocomplete ( options );
+    $("input[placeholder=الحالة]").easyAutocomplete(options);
 
 }
 
@@ -678,33 +650,33 @@ function showModel ( IDdevices ) {
  * اضافة حالة الجهاز
  * @param IDdevices
  */
-function deleteThisStatUs ( IDdevices , idCustemer ) {
+function deleteThisStatUs(IDdevices, idCustemer) {
 
 
 
     //$("div[name=parent" +IDdevices+ "]").hide();
 
 
-    $.ajax ( {
-        type : "POST" ,
-        url : 'json/deleteStatusDevices.php' ,
-        dataType : "json" ,
+    $.ajax({
+        type: "POST",
+        url: 'json/deleteStatusDevices.php',
+        dataType: "json",
 
-        data : { 'ID' : IDdevices } , // serializes the form's elements.
+        data: {'ID': IDdevices}, // serializes the form's elements.
 
-        success : function ( data ) {
+        success: function (data) {
 
-            notie.alert ( data.idMsg , data.msg , 2.5 );
-            $ ( "div[name=parent" + IDdevices + "]" ).toggle ( "explode" );
+            notie.alert(data.idMsg, data.msg, 2.5);
+            $("div[name=parent" + IDdevices + "]").toggle("explode");
 
 
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
 
-    } );
+    });
 
 
 }
@@ -714,28 +686,28 @@ function deleteThisStatUs ( IDdevices , idCustemer ) {
  * تعديل حالة الجخهاز الى تم ايقافه
  * @param IDdevices رقم الجهاز
  */
-function finshDevice ( IDdevices ) {
+function finshDevice(IDdevices) {
 
-    $.ajax ( {
-        type : "GET" ,
-        url : 'json/editFinshStatusDevices.php' ,
-        dataType : "json" ,
+    $.ajax({
+        type: "GET",
+        url: 'json/editFinshStatusDevices.php',
+        dataType: "json",
 
-        data : { 'ID' : IDdevices } , // serializes the form's elements.
+        data: {'ID': IDdevices}, // serializes the form's elements.
 
-        success : function ( data ) {
+        success: function (data) {
 
-            notie.alert ( data.idMsg , data.msg , 2.5 );
-            $ ( "div[name=parent" + IDdevices + "]" ).toggle ( "explode" );
+            notie.alert(data.idMsg, data.msg, 2.5);
+            $("div[name=parent" + IDdevices + "]").toggle("explode");
 
 
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
 
-    } );
+    });
 
 
 }
@@ -750,30 +722,30 @@ function finshDevice ( IDdevices ) {
  * تعديل الرقم المرجعي لدى شركة الصيانة
  * @param IDdevices
  */
-function editRefDevices ( IDdevices ) {
+function editRefDevices(IDdevices) {
 
-    notie.input ( 'تعديل المرجع' , 'Submit' , 'Cancel' , 'text' , 'ارقم مرجع:' , function ( value_entered ) {
+    notie.input('تعديل المرجع', 'Submit', 'Cancel', 'text', 'ارقم مرجع:', function (value_entered) {
 
-        $.ajax ( {
-            type : "POST" ,
-            url : 'json/editRefDevices.php' ,
-            dataType : "json" ,
+        $.ajax({
+            type: "POST",
+            url: 'json/editRefDevices.php',
+            dataType: "json",
 
-            data : { 'ID' : IDdevices , title : value_entered } , // serializes the form's elements.
+            data: {'ID': IDdevices, title: value_entered}, // serializes the form's elements.
 
-            success : function ( data ) {
+            success: function (data) {
 
-                notie.alert ( data.idMsg , data.msg , 2.5 );
-            } ,
-            error : function ( e ) {
-                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+                notie.alert(data.idMsg, data.msg, 2.5);
+            },
+            error: function (e) {
+                notie.alert(3, 'Error Respnse Paramter', 2.5);
             }
 
 
-        } );
+        });
 
 
-    } , '' );
+    }, '');
 
 
 }
@@ -783,30 +755,30 @@ function editRefDevices ( IDdevices ) {
  * تعديل رقم الشحنة
  * @param IDdevices
  */
-function editTracNumber ( IDdevices ) {
+function editTracNumber(IDdevices) {
 
-    notie.input ( ' رقم شحنة' , 'Submit' , 'Cancel' , 'text' , 'رقم الشحنة:' , function ( value_entered ) {
+    notie.input(' رقم شحنة', 'Submit', 'Cancel', 'text', 'رقم الشحنة:', function (value_entered) {
 
-        $.ajax ( {
-            type : "POST" ,
-            url : 'json/editTracNumberDevices.php' ,
-            dataType : "json" ,
+        $.ajax({
+            type: "POST",
+            url: 'json/editTracNumberDevices.php',
+            dataType: "json",
 
-            data : { 'ID' : IDdevices , tracNumber : value_entered } , // serializes the form's elements.
+            data: {'ID': IDdevices, tracNumber: value_entered}, // serializes the form's elements.
 
-            success : function ( data ) {
+            success: function (data) {
 
-                notie.alert ( data.idMsg , data.msg , 2.5 );
-            } ,
-            error : function ( e ) {
-                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+                notie.alert(data.idMsg, data.msg, 2.5);
+            },
+            error: function (e) {
+                notie.alert(3, 'Error Respnse Paramter', 2.5);
             }
 
 
-        } );
+        });
 
 
-    } , '' );
+    }, '');
 
 
 }
@@ -817,30 +789,30 @@ function editTracNumber ( IDdevices ) {
  * @param IDdevices
  */
 
-function editMonyDevices ( IDdevices ) {
+function editMonyDevices(IDdevices) {
 
-    notie.input ( 'مبلغ الصيانة' , 'Submit' , 'Cancel' , 'text' , 'المبلغ:' , function ( value_entered ) {
+    notie.input('مبلغ الصيانة', 'Submit', 'Cancel', 'text', 'المبلغ:', function (value_entered) {
 
-        $.ajax ( {
-            type : "POST" ,
-            url : 'json/editMonyDevices.php' ,
-            dataType : "json" ,
+        $.ajax({
+            type: "POST",
+            url: 'json/editMonyDevices.php',
+            dataType: "json",
 
-            data : { 'ID' : IDdevices , Mony : value_entered } , // serializes the form's elements.
+            data: {'ID': IDdevices, Mony: value_entered}, // serializes the form's elements.
 
-            success : function ( data ) {
+            success: function (data) {
 
-                notie.alert ( data.idMsg , data.msg , 2.5 );
-            } ,
-            error : function ( e ) {
-                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+                notie.alert(data.idMsg, data.msg, 2.5);
+            },
+            error: function (e) {
+                notie.alert(3, 'Error Respnse Paramter', 2.5);
             }
 
 
-        } );
+        });
 
 
-    } , '' );
+    }, '');
 
 
 }
@@ -850,25 +822,34 @@ function editMonyDevices ( IDdevices ) {
  * تعديل اهمية الجهاز
  * @param IDdevices  رقم الجهاز
  */
-function editImportantDevices ( IDdevices ) {
+function editImportantDevices(IDdevices) {
 
-    $.ajax ( {
-        type : "POST" ,
-        url : 'json/devices/editImportantDevices.php' ,
-        dataType : "json" ,
 
-        data : { 'ID' : IDdevices } , // serializes the form's elements.
+    $("#loadImportant").waitMe({effect: 'pulse'});
 
-        success : function ( data ) {
 
-            notie.alert ( data.idMsg , data.msg , 2.5 );
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+    $.ajax({
+        type: "POST",
+        url: 'json/devices/editImportantDevices.php',
+        dataType: "json",
+
+        data: {'ID': IDdevices}, // serializes the form's elements.
+
+        success: function (data) {
+
+            notie.alert(data.idMsg, data.msg, 2.5);
+
+
+            ImportantDevicesNotF();
+
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
+            $("#loadImportant").waitMe('hide');
         }
 
 
-    } );
+    });
 
 }
 
@@ -877,72 +858,66 @@ function editImportantDevices ( IDdevices ) {
  *  وصل المعرض الجهاز
  * @param IDdevices  رقم الجهاز
  */
-function editInShowRoomDevices ( IDdevices ) {
+function editInShowRoomDevices(IDdevices) {
 
-    $.ajax ( {
-        type : "POST" ,
-        url : 'json/devices/editInShowRoomDevices.php' ,
-        dataType : "json" ,
+    $.ajax({
+        type: "POST",
+        url: 'json/devices/editInShowRoomDevices.php',
+        dataType: "json",
 
-        data : { 'ID' : IDdevices } , // serializes the form's elements.
+        data: {'ID': IDdevices}, // serializes the form's elements.
 
-        success : function ( data ) {
+        success: function (data) {
 
-            notie.alert ( data.idMsg , data.msg , 2.5 );
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+            notie.alert(data.idMsg, data.msg, 2.5);
+            InShowRoomNotF();
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
 
-    } );
+    });
 
 }
-
-
-
-
-
-
-
 
 
 /**
  * متابعة حالة الاجهزة وعرضها
  */
 
-function showDevicesIsNotFinsh () {
+function showDevicesIsNotFinsh() {
 
-    $ ( "#Contener" ).load ( "json/getDevicesIsNotFinsh.php" , function () {
+    $("#Contener").load("json/getDevicesIsNotFinsh.php", function () {
 
-        $ ( '#exported' ).DataTable ();
-
-
-        $ ( "p[data-ID]" ).each ( function ( index ) {
+        $('#exported').DataTable();
 
 
-            var id = $ ( this ).attr ( 'data-ID' );
-
-            $ ( this ).load ( "json/getStatusDevices.php?ID=" + id );
-
-        } );
+        $("p[data-ID]").each(function (index) {
 
 
-    } );
+            var id = $(this).attr('data-ID');
+
+            $(this).load("json/getStatusDevices.php?ID=" + id);
+
+        });
+
+
+    });
 
 
 }
 
 
-function displayListMenu ( s ) {
+function displayListMenu(s) {
 
 
-    if ( s == true ) {
-        $ ( '#cbp-spmenu-s1' ).addClass ( 'cbp-spmenu-open' );
+    if (s == true) {
+        $('#cbp-spmenu-s1').addClass('cbp-spmenu-open');
     }
     else {
 
-        $ ( '#cbp-spmenu-s1' ).removeClass ( 'cbp-spmenu-open' );
+        $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open');
 
     }
 
@@ -952,45 +927,45 @@ function displayListMenu ( s ) {
 /**
  * حصول على بيانات الاجهزة رميا شارت
  */
-function getChart () {
+function getChart() {
 
 
-    $.ajax ( {
-        type : "POST" ,
-        url : 'json/getChart.php' ,
-        dataType : "json" ,
+    $.ajax({
+        type: "POST",
+        url: 'json/getChart.php',
+        dataType: "json",
 
-        data : { 'ID' : null } , // serializes the form's elements.
+        data: {'ID': null}, // serializes the form's elements.
 
-        success : function ( data ) {
+        success: function (data) {
 
-            notie.alert ( data.idMsg , data.msg , 2.5 );
+            notie.alert(data.idMsg, data.msg, 2.5);
 
-            headrTitle ( 'الاجهزة' );
-
-
-            $ ( "#Contener" ).html ( creatChart ( 'myPieChart' , 'بيانات الاجهزة' ) );
-            $ ( "#Contener" ).append ( creatChart ( 'myBarChart' , 'العملاء' ) );
-
-            var ctx = document.getElementById ( "myPieChart" ).getContext ( "2d" );
-            window.myPie = new Chart ( ctx ).Pie ( data.Pia );
+            headrTitle('الاجهزة');
 
 
-            var ctx = document.getElementById ( "myBarChart" ).getContext ( "2d" );
-            window.myBar = new Chart ( ctx ).Pie ( data.Bar );
+            $("#Contener").html(creatChart('myPieChart', 'بيانات الاجهزة'));
+            $("#Contener").append(creatChart('myBarChart', 'العملاء'));
+
+            var ctx = document.getElementById("myPieChart").getContext("2d");
+            window.myPie = new Chart(ctx).Pie(data.Pia);
 
 
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+            var ctx = document.getElementById("myBarChart").getContext("2d");
+            window.myBar = new Chart(ctx).Pie(data.Bar);
+
+
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
 
-    } );
+    });
 }
 
 
-function creatChart ( ID , t ) {
+function creatChart(ID, t) {
 
 
     var h = ' <div class="col-md-6"> ';
@@ -1011,7 +986,7 @@ function creatChart ( ID , t ) {
 }
 
 
-function headrTitle ( t ) {
+function headrTitle(t) {
     var h = '';
     h += '<div class="page-title">'
     h += ' <h3>' + t + '</h3>'
@@ -1023,67 +998,62 @@ function headrTitle ( t ) {
     h += ' </div>'
     h += '</div> '
 
-    $ ( '#titlePage' ).html ( h )
+    $('#titlePage').html(h)
 
 }
-
-
-
-
 
 
 /**
  * تعديل نوع الجهاز
  * @param id
  */
-function  editDevicesType (id) {
+function editDevicesType(id) {
 
 
     // new Spinner ().spin ( $ ( '#editDevicesTypeModal' ) );
 
 
-
-    var IDInput=$("#IDTypeDeviceTitle");
+    var IDInput = $("#IDTypeDeviceTitle");
 
 
     var options = {
-        url : "json/gettypeDevicesAutoCompleat.php" ,
-        theme : "blue-light" ,
+        url: "json/gettypeDevicesAutoCompleat.php",
+        theme: "blue-light",
 
 
-        getValue : "NameDevices" ,
+        getValue: "NameDevices",
 
 
-        ajaxSettings : {
-            dataType : "json" ,
-            method : "POST" ,
-            data : {
-                dataType : "json"
+        ajaxSettings: {
+            dataType: "json",
+            method: "POST",
+            data: {
+                dataType: "json"
             }
-        } ,
+        },
 
-        preparePostData : function ( data ) {
-            data.d = IDInput.val ();
+        preparePostData: function (data) {
+            data.d = IDInput.val();
             return data;
-        } ,
+        },
 
-        template : {
-            type : "iconRight" ,
-            fields : {
-                iconSrc : "imageUrl"
+        template: {
+            type: "iconRight",
+            fields: {
+                iconSrc: "imageUrl"
             }
-        } ,
-        list : {
-            maxNumberOfElements : 999 ,
-            match : {
-                enabled : false
-            } ,
-            onSelectItemEvent : function () {
+        },
+        list: {
+            maxNumberOfElements: 999,
+            match: {
+                enabled: false
+            },
+            onSelectItemEvent: function () {
 
 
                 //
-                var v = $ ( "#IDTypeDeviceTitle" ).getSelectedItemData ().ID;
-                $ ( "#IDTypeDevice" ).val ( v ).trigger ( "change" );
+                var v = $("#IDTypeDeviceTitle").getSelectedItemData().ID;
+                $("#IDTypeDevice").val(v).trigger("change");
 
 
             }
@@ -1091,32 +1061,25 @@ function  editDevicesType (id) {
     };
 
 
-
-
-
-
-
     $('#editDevicesTypeModal').on('show.bs.modal', function (event) {
 
 
-        $ ( '#editDevicesTypeModal' ).waitMe ( { effect : 'pulse' , sizeW : '10px' , sizeH : '10px' } );
-
+        $('#editDevicesTypeModal').waitMe({effect: 'pulse', sizeW: '10px', sizeH: '10px'});
 
 
         var button = $(event.relatedTarget) // Button that triggered the modal
-       var idDevice=button.attr('data-ID');
+        var idDevice = button.attr('data-ID');
         var modal = $(this)
 
 
+        $.ajax({
+            type: "GET",
+            url: 'json/devices/getInfoDeviceByID.php',
+            dataType: "json",
 
-        $.ajax ( {
-            type : "GET" ,
-            url : 'json/devices/getInfoDeviceByID.php' ,
-            dataType : "json" ,
+            data: {'ID': idDevice}, // serializes the form's elements.
 
-            data : { 'ID' : idDevice} , // serializes the form's elements.
-
-            success : function ( data ) {
+            success: function (data) {
 
                 modal.find('#Name').val(data[0].Name);
                 modal.find('#MobileNumber').val(data[0].MobileNumber);
@@ -1127,58 +1090,82 @@ function  editDevicesType (id) {
                 modal.find('#IdCustemer').val(data[0].IdCustemer);
                 modal.find('#idDevices').val(data[0].idDevices);
                 modal.find('#Mony').val(data[0].Mony);
-                modal.find ( '#exampleModalLabel' ).val ( 'جهاز رقم #' + data[ 0 ].idDevices );
+                modal.find('#exampleModalLabel').val('جهاز رقم #' + data[0].idDevices);
 
-                $ ( '#editDevicesTypeModal' ).waitMe ( 'hide' );
-
-
+                $('#editDevicesTypeModal').waitMe('hide');
 
 
-            } ,
-            error : function ( e ) {
-                notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+            },
+            error: function (e) {
+                notie.alert(3, 'Error Respnse Paramter', 2.5);
             }
 
 
-        } );
+        });
 
 
-        IDInput.easyAutocomplete ( options );
+        IDInput.easyAutocomplete(options);
 
         // IDInput.focus();
 
     });
-    
+
 }
 /**
  * حفظ تعديل الجهاز
  */
 
-function saveEditDevices (  ) {
-    $.ajax ( {
-        type : "POST" ,
-        url : 'json/devices/editCustemerAndDevices.php' ,
-        dataType : "json" ,
+function saveEditDevices() {
 
-        data : $("#editCustemerAndDevices").serialize() , // serializes the form's elements.
-
-        success : function ( data ) {
+    // $ ( '#editDevicesTypeModal' ).waitMe ({ effect : 'pulse' });
 
 
-            notie.alert ( 1 , data.msg , 2.5 );
+    $.ajax({
+        type: "POST",
+        url: 'json/devices/editCustemerAndDevices.php',
+        dataType: "json",
+
+        data: $("#editCustemerAndDevices").serialize(), // serializes the form's elements.
+
+        success: function (data) {
+
+
+            notie.alert(1, data.msg, 2.5);
 
             $('#editDevicesTypeModal').modal('toggle');
 
 
-
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        },
+        error: function (e) {
+            notie.alert(3, 'Error Respnse Paramter', 2.5);
         }
 
 
-    } );
+    });
 }
 
 
+function InShowRoomNotF() {
+
+    // اضافة الاجهزة اللتي وصلت المعرض
+    $.getJSON("json/devices/getInShowRoomDevices.php", function (data) {
+        $('#InShowRoomTpl').tmpl(data).appendTo('#dropdownMenuInshowRoom');
+        $("#dropdownMenuBdgInshowRoom").html(data.length);
+        $("#loadInshowRoom").waitMe('hide');
+    });
+
+}
+
+
+// اضافة للمهم
+function ImportantDevicesNotF() {
+
+
+    $.getJSON("json/devices/getImportantDevices.php", function (data) {
+        $('#ImportantTpl').tmpl(data).appendTo('#dropdownMenuImportant');
+        $("#dropdownMenuBdgImportant").html(data.length);
+        $("#loadImportant").waitMe('hide');
+    });
+
+}
 
