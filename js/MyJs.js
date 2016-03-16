@@ -6,6 +6,9 @@
 
 
 
+
+
+
 //اضافة نوع جهاز
 
 
@@ -364,38 +367,31 @@ function searchForm () {
     }
 
 
-    $ ( '#listCustemers' ).waitMe ( {
-        effect : 'roundBounce' ,
-        text : '' ,
-        bg : '#FFFFFF' ,
-        color : '#000' ,
-        sizeW : '' ,
-        sizeH : '' ,
-        source : ''
-    } );
+    $ ( '#listCustemers' ).waitMe ( { effect : 'bounce' } );
 
 
+    displayListMenu ( true );
 
 
-    $.ajax ( {
-        type : 'GET' ,
-        dataType : "json" ,
-        url : 'json/getCoustemers.php' ,
-        data : dataObj ,
-        success : function ( data ) {
-
-            $ ( "#listCustemers" ).empty ();
-            $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
-
-
-            displayListMenu ( true );
-
-        } ,
-        error : function ( e ) {
-            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
-        }
-
-    } );
+    // $.ajax ( {
+    //     type : 'GET' ,
+    //     dataType : "json" ,
+    //     url : 'json/getCoustemers.php' ,
+    //     data : dataObj ,
+    //     success : function ( data ) {
+    //
+    //         $ ( "#listCustemers" ).empty ();
+    //         $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
+    //
+    //
+    //         displayListMenu ( true );
+    //
+    //     } ,
+    //     error : function ( e ) {
+    //         notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+    //     }
+    //
+    // } );
 
 }
 
@@ -416,15 +412,8 @@ function showListDevices ( d ) {
 
     $ ( "#Contener" ).empty ();
 
-    $ ( "#Contener" ).waitMe ( {
-        effect : 'bounce' ,
-        text : '' ,
-        bg : '#FFFFFF' ,
-        color : '#000' ,
-        sizeW : '' ,
-        sizeH : '' ,
-        source : ''
-    } );
+    $ ( "#Contener" ).waitMe ( { effect : 'bounce' } );
+    ;
 
 
     $.getJSON ( "json/devices/getListDevices.php?" + $.param ( d ) , function ( data ) {
@@ -462,32 +451,20 @@ function showListDevices ( d ) {
             } );
 
 
-            $ ( "#Contener" ).waitMe ( {
-                effect : 'bounce' ,
-                text : '' ,
-                bg : '#FFFFFF' ,
-                color : '#000' ,
-                sizeW : '' ,
-                sizeH : '' ,
-                source : ''
-            } );
+            $ ( div ).waitMe ( { effect : 'bounce' } );
 
 
             $.ajax ( {
                 url : link ,
                 success : function ( response ) {
                     $ ( '#' + div_id ).html ( response );
+                    $ ( "#Contener" ).waitMe ( 'hide' );
                 }
             } );
-            return $ ( div ).waitMe ( {
-                effect : 'bounce' ,
-                text : '' ,
-                bg : '#FFFFFF' ,
-                color : '#000' ,
-                sizeW : '' ,
-                sizeH : '' ,
-                source : ''
-            } );
+            return $ ( div ).waitMe ( { effect : 'bounce' } );
+
+
+
         }
 
 
@@ -507,15 +484,10 @@ function showListDevices ( d ) {
 function loadStatUsBar ( id ) {
 
 
-    $ ( "#resultStatusBar" ).waitMe ( {
-        effect : 'bounce' ,
-        text : '' ,
-        bg : '#FFFFFF' ,
-        color : '#000' ,
-        sizeW : '' ,
-        sizeH : '' ,
-        source : ''
-    } );
+    $ ( '#resultStatusBar' ).waitMe ( { effect : 'bounce' } );
+
+
+
     $ ( "#resultStatusBar" ).load ( "json/getstatUsBarDevices.php?ID=" + id );
 
 
