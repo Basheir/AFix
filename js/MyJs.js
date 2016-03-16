@@ -312,16 +312,6 @@ function ListCustemerGenrats ( val ) {
 function getLastCustemer () {
 
 
-    $ ( "#cd-cart" ).waitMe ( {
-        effect : 'bounce' ,
-        text : '' ,
-        bg : '#FFFFFF' ,
-        color : '#000' ,
-        sizeW : '' ,
-        sizeH : '' ,
-        source : ''
-    } );
-
     $.ajax ( {
         type : 'GET' ,
         dataType : "json" ,
@@ -329,6 +319,8 @@ function getLastCustemer () {
         success : function ( data ) {
 
             $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
+
+            $ ( "#cd-cart" ).waitMe ( 'hide' );
 
             //hideAllPopOver();
         } , error : function ( e ) {
@@ -340,6 +332,8 @@ function getLastCustemer () {
 
 }
 
+
+// بحث عن عميل
 
 function searchForm () {
 
@@ -370,8 +364,8 @@ function searchForm () {
     }
 
 
-    $ ( '#ListItems' ).waitMe ( {
-        effect : 'bounce' ,
+    $ ( '#listCustemers' ).waitMe ( {
+        effect : 'roundBounce' ,
         text : '' ,
         bg : '#FFFFFF' ,
         color : '#000' ,
@@ -391,15 +385,6 @@ function searchForm () {
         success : function ( data ) {
 
             $ ( "#listCustemers" ).empty ();
-            $ ( "#listCustemers" ).waitMe ( {
-                effect : 'bounce' ,
-                text : '' ,
-                bg : '#FFFFFF' ,
-                color : '#000' ,
-                sizeW : '' ,
-                sizeH : '' ,
-                source : ''
-            } );
             $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
 
 
