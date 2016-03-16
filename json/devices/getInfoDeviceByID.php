@@ -10,6 +10,7 @@ include('../../config.php');
 $IDdevices = (int)$_GET['ID'];
 
 
+
 $db->join("coustemers", "devices.IdCustemer = coustemers.ID", "LEFT");
 $db->join("typedevices", "devices.IDTypeDevice = typedevices.ID", "LEFT");
 $devicesList = $db->where('devices.idDevices', $IDdevices);

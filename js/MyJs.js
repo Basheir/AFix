@@ -1010,8 +1010,6 @@ function headrTitle(t) {
 function editDevicesType(id) {
 
 
-    // new Spinner ().spin ( $ ( '#editDevicesTypeModal' ) );
-
 
     var IDInput = $("#IDTypeDeviceTitle");
 
@@ -1068,7 +1066,7 @@ function editDevicesType(id) {
 
 
         var button = $(event.relatedTarget) // Button that triggered the modal
-        var idDevice = button.attr('data-ID');
+        var idDevice = button.attr('data-id');
         var modal = $(this)
 
 
@@ -1093,7 +1091,6 @@ function editDevicesType(id) {
                 modal.find('#exampleModalLabel').val('جهاز رقم #' + data[0].idDevices);
 
                 $('#editDevicesTypeModal').waitMe('hide');
-
 
             },
             error: function (e) {
