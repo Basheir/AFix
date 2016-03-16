@@ -517,9 +517,18 @@ $ ( document ).ready ( function () {
 
 
     // اضافة للبادج
+    $ ( "#loadImportant" ).waitMe ( { effect : 'pulse' , sizeW : '10px' , sizeH : '10px' } );
+    $ ( "#loadInshowRoom" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
+    $ ( "#loadMaxDate" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
+    $ ( "#loadNotfctionBdg" ).waitMe ( { effect : 'pulse' , sizeW : '2px' , sizeH : '2px' } );
+
+
+
+
     $.getJSON ( "json/devices/getCollectionDevices.php" , function ( data ) {
         $ ( '#dropdownMenuNotfctionTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuNotfction' );
         $ ( "#dropdownMenuNotfctionBdg" ).html ( data.length );
+        $ ( "#loadNotfctionBdg" ).waitMe ( 'hide' );
     } );
 
 
@@ -527,6 +536,11 @@ $ ( document ).ready ( function () {
     $.getJSON ( "json/devices/getImportantDevices.php" , function ( data ) {
         $ ( '#ImportantTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuImportant' );
         $ ( "#dropdownMenuBdgImportant" ).html ( data.length );
+
+
+        $ ( "#loadImportant" ).waitMe ( 'hide' );
+
+
     } );
 
 
@@ -534,6 +548,7 @@ $ ( document ).ready ( function () {
     $.getJSON ( "json/devices/getInShowRoomDevices.php" , function ( data ) {
         $ ( '#InShowRoomTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuInshowRoom' );
         $ ( "#dropdownMenuBdgInshowRoom" ).html ( data.length );
+        $ ( "#loadInshowRoom" ).waitMe ( 'hide' );
     } );
 
 
@@ -541,6 +556,7 @@ $ ( document ).ready ( function () {
     $.getJSON ( "json/devices/getMaxDateDevices.php" , function ( data ) {
         $ ( '#MaxDateTpl' ).tmpl ( data ).appendTo ( '#dropdownMenuMaxDate' );
         $ ( "#dropdownMenuBdgMaxDate" ).html ( data.length );
+        $ ( "#loadMaxDate" ).waitMe ( 'hide' );
     } );
 
 
@@ -1029,6 +1045,7 @@ function  editDevicesType (id) {
 
     var IDInput=$("#IDTypeDeviceTitle");
 
+
     var options = {
         url : "json/gettypeDevicesAutoCompleat.php" ,
         theme : "blue-light" ,
@@ -1082,10 +1099,13 @@ function  editDevicesType (id) {
     $('#editDevicesTypeModal').on('show.bs.modal', function (event) {
 
 
+        $ ( '#editDevicesTypeModal' ).waitMe ( { effect : 'pulse' , sizeW : '10px' , sizeH : '10px' } );
+
+
+
         var button = $(event.relatedTarget) // Button that triggered the modal
        var idDevice=button.attr('data-ID');
         var modal = $(this)
-
 
 
 
@@ -1098,8 +1118,6 @@ function  editDevicesType (id) {
 
             success : function ( data ) {
 
-
-
                 modal.find('#Name').val(data[0].Name);
                 modal.find('#MobileNumber').val(data[0].MobileNumber);
                 modal.find('#Serial').val(data[0].Serial);
@@ -1109,8 +1127,9 @@ function  editDevicesType (id) {
                 modal.find('#IdCustemer').val(data[0].IdCustemer);
                 modal.find('#idDevices').val(data[0].idDevices);
                 modal.find('#Mony').val(data[0].Mony);
+                modal.find ( '#exampleModalLabel' ).val ( 'جهاز رقم #' + data[ 0 ].idDevices );
 
-
+                $ ( '#editDevicesTypeModal' ).waitMe ( 'hide' );
 
 
 
