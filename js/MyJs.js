@@ -6,12 +6,6 @@
 
 
 
-
-
-var $LoadingIndectior = '<img alt="Loaded" style="width: 16px; height: 16px"  src="./images/load.gif" />';
-var spinner;
-
-
 //اضافة نوع جهاز
 
 
@@ -318,7 +312,15 @@ function ListCustemerGenrats ( val ) {
 function getLastCustemer () {
 
 
-    $ ( "#cd-cart" ).html ( $LoadingIndectior );
+    $ ( "#cd-cart" ).waitMe ( {
+        effect : 'bounce' ,
+        text : '' ,
+        bg : '#FFFFFF' ,
+        color : '#000' ,
+        sizeW : '' ,
+        sizeH : '' ,
+        source : ''
+    } );
 
     $.ajax ( {
         type : 'GET' ,
@@ -368,7 +370,18 @@ function searchForm () {
     }
 
 
-    $ ( "#ListItems" ).html ( spinner.el );
+    $ ( '#ListItems' ).waitMe ( {
+        effect : 'bounce' ,
+        text : '' ,
+        bg : '#FFFFFF' ,
+        color : '#000' ,
+        sizeW : '' ,
+        sizeH : '' ,
+        source : ''
+    } );
+
+
+
 
     $.ajax ( {
         type : 'GET' ,
@@ -378,7 +391,15 @@ function searchForm () {
         success : function ( data ) {
 
             $ ( "#listCustemers" ).empty ();
-            $ ( "#listCustemers" ).append ( spinner );
+            $ ( "#listCustemers" ).waitMe ( {
+                effect : 'bounce' ,
+                text : '' ,
+                bg : '#FFFFFF' ,
+                color : '#000' ,
+                sizeW : '' ,
+                sizeH : '' ,
+                source : ''
+            } );
             $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
 
 
@@ -410,8 +431,15 @@ function showListDevices ( d ) {
 
     $ ( "#Contener" ).empty ();
 
-    spinner = new Spinner ().spin ( document.body );
-    $ ( "#Contener" ).append ( spinner );
+    $ ( "#Contener" ).waitMe ( {
+        effect : 'bounce' ,
+        text : '' ,
+        bg : '#FFFFFF' ,
+        color : '#000' ,
+        sizeW : '' ,
+        sizeH : '' ,
+        source : ''
+    } );
 
 
     $.getJSON ( "json/devices/getListDevices.php?" + $.param ( d ) , function ( data ) {
@@ -424,7 +452,7 @@ function showListDevices ( d ) {
         //console.log($('#DevicesListTemplate'));
 
 
-        spinner.stop ();
+
 
 
         $ ( '*[data-poload]' ).popover ( {
@@ -449,7 +477,15 @@ function showListDevices ( d ) {
             } );
 
 
-            $ ( "#Contener" ).append ( spinner );
+            $ ( "#Contener" ).waitMe ( {
+                effect : 'bounce' ,
+                text : '' ,
+                bg : '#FFFFFF' ,
+                color : '#000' ,
+                sizeW : '' ,
+                sizeH : '' ,
+                source : ''
+            } );
 
 
             $.ajax ( {
@@ -458,7 +494,15 @@ function showListDevices ( d ) {
                     $ ( '#' + div_id ).html ( response );
                 }
             } );
-            return $ ( div ).html ( spinner.el );
+            return $ ( div ).waitMe ( {
+                effect : 'bounce' ,
+                text : '' ,
+                bg : '#FFFFFF' ,
+                color : '#000' ,
+                sizeW : '' ,
+                sizeH : '' ,
+                source : ''
+            } );
         }
 
 
@@ -478,7 +522,15 @@ function showListDevices ( d ) {
 function loadStatUsBar ( id ) {
 
 
-    $ ( "#resultStatusBar" ).html ( $LoadingIndectior );
+    $ ( "#resultStatusBar" ).waitMe ( {
+        effect : 'bounce' ,
+        text : '' ,
+        bg : '#FFFFFF' ,
+        color : '#000' ,
+        sizeW : '' ,
+        sizeH : '' ,
+        source : ''
+    } );
     $ ( "#resultStatusBar" ).load ( "json/getstatUsBarDevices.php?ID=" + id );
 
 
@@ -544,7 +596,7 @@ $ ( document ).ready ( function () {
 
     $ ( document ).ajaxStop ( function () {
 
-        spinner.stop ();
+        // waitMe({ effect : 'bounce', text : '', bg : '#FFFFFF', color : '#000', sizeW : '', sizeH : '', source : '' });
 
     });
 
