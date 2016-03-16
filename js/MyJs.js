@@ -370,28 +370,25 @@ function searchForm () {
     $ ( '#listCustemers' ).waitMe ( { effect : 'bounce' } );
 
 
-    displayListMenu ( true );
+    $.ajax ( {
+        type : 'GET' ,
+        dataType : "json" ,
+        url : 'json/getCoustemers.php' ,
+        data : dataObj ,
+        success : function ( data ) {
+
+            $ ( "#listCustemers" ).empty ();
+            $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
 
 
-    // $.ajax ( {
-    //     type : 'GET' ,
-    //     dataType : "json" ,
-    //     url : 'json/getCoustemers.php' ,
-    //     data : dataObj ,
-    //     success : function ( data ) {
-    //
-    //         $ ( "#listCustemers" ).empty ();
-    //         $ ( '#ListCustemerTpl' ).tmpl ( data ).appendTo ( '#listCustemers' );
-    //
-    //
-    //         displayListMenu ( true );
-    //
-    //     } ,
-    //     error : function ( e ) {
-    //         notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
-    //     }
-    //
-    // } );
+            displayListMenu ( true );
+
+        } ,
+        error : function ( e ) {
+            notie.alert ( 3 , 'Error Respnse Paramter' , 2.5 );
+        }
+
+    } );
 
 }
 
