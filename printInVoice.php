@@ -43,7 +43,7 @@ foreach ($InVoice as $v) {
     <thead>
     <tr>
 
-            <img alt=\"Logo\" class='logo' src='" . IMAGEURL . "/4tech.png' height=\"60\"  width=\"150\">
+            <img alt=\"Logo\" class='logo' src='" . IMAGEURL . "/4tech.png' height=\"50\"  width=\"150\">
 
     </tr>
     <tr>
@@ -54,7 +54,7 @@ foreach ($InVoice as $v) {
     <tr>
         <td>
   $v[Name] </td>
-        <td class=\"item-price\">$v[Name]</td>
+        <td class=\"item-price\">الاسم</td>
     </tr>
     <tr>
         <td>
@@ -94,6 +94,27 @@ foreach ($InVoice as $v) {
 
 
 ?>
+
+
+<br>
+
+
+<div>
+    <img alt="Logo" class='logo' src='<?php echo IMAGEURL; ?>/twitter.png' height="30" width="30">
+    <img alt="Logo" class='logo' src='<?php echo IMAGEURL; ?>/instgra.jpg' height="30" width="30">
+
+    /4Techs
+
+</div>
+
+<div>
+    <h2>WWW.4Techs.Net</h2>
+</div>
+
+
+<div>
+    <h3>هاتف:0144249930</h3>
+</div>
 
 
 </body>

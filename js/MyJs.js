@@ -11,10 +11,6 @@
 
 //اضافة نوع جهاز
 
-
-// عند التركيز على نوع الجهاز تعرض القائمة
-
-
 function AddNewDevices() {
 
 
@@ -510,11 +506,8 @@ $(document).ready(function () {
     $('[data-toggle="popover"]').popover({html: true});
 
 
-    // اضافة للبادج
-    $("#loadImportant").waitMe({effect: 'pulse', sizeW: '10px', sizeH: '10px'});
-    $("#loadInshowRoom").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
-    $("#loadMaxDate").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
-    $("#loadNotfctionBdg").waitMe({effect: 'pulse', sizeW: '2px', sizeH: '2px'});
+    // اضافة التحميل
+    $('[loading=true]').waitMe({effect: 'pulse'});
 
 
     $.getJSON("json/devices/getCollectionDevices.php", function (data) {
@@ -536,11 +529,7 @@ $(document).ready(function () {
     });
 
 
-    $(document).ajaxStop(function () {
 
-        // waitMe({ effect : 'bounce', text : '', bg : '#FFFFFF', color : '#000', sizeW : '', sizeH : '', source : '' });
-
-    });
 
 
     /**
