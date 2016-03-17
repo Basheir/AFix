@@ -435,7 +435,7 @@ function showListDevices(d) {
 
 
         //console.log($('#DevicesListTemplate'));
-
+ 
 
         $('*[data-poload]').popover({
             "html": true,
@@ -454,7 +454,7 @@ function showListDevices(d) {
             });
         });
 
- 
+
         function details_in_popup(link, div_id) {
 
 
