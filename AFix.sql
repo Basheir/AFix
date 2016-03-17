@@ -1,14 +1,3 @@
-#بسم الله الرحمن الرحيم
-# Host     : localhost
-# Port     : 3309
-# Database : AFix
-# ---------------------------------------
-# Host     : localhost
-# Port     : 3309
-# Database : AFix
-
-
-
 # SQL Manager 2007 for MySQL 4.3.0.1
 # ---------------------------------------
 # Host     : localhost
@@ -24,8 +13,8 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 CREATE DATABASE `AFix`
-    CHARACTER SET 'utf8'
-    COLLATE 'utf8_general_ci';
+  CHARACTER SET 'utf8'
+  COLLATE 'utf8_general_ci';
 
 USE `AFix`;
 
@@ -41,46 +30,55 @@ CREATE TABLE `coustemers` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=19 ROW_FORMAT=DYNAMIC
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT='';
+  AUTO_INCREMENT = 62
+  ROW_FORMAT = DYNAMIC
+  CHARACTER SET 'utf8'
+  COLLATE 'utf8_general_ci'
+  COMMENT = '';
 
 #
 # Structure for the `devices` table :
 #
 
 CREATE TABLE `devices` (
-  `idDevices` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `Serial` VARCHAR(90) COLLATE utf8_general_ci DEFAULT NULL,
-  `IDTypeDevice` TINYINT(3) DEFAULT NULL,
-  `Comment` VARCHAR(140) COLLATE utf8_general_ci DEFAULT '',
-  `DateAdded` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `IdCustemer` INTEGER(5) NOT NULL,
-  `Mony` INTEGER(9) DEFAULT '0',
-  `Finsh` ENUM('0','1') DEFAULT '0',
-  `Ref` VARCHAR(140) COLLATE utf8_general_ci DEFAULT NULL,
-  `tracNumber` VARCHAR(99) COLLATE utf8_general_ci DEFAULT NULL,
+  `idDevices`         INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `Serial`            VARCHAR(90) COLLATE utf8_general_ci DEFAULT NULL,
+  `IDTypeDevice`      TINYINT(3) DEFAULT NULL,
+  `Comment`           VARCHAR(140) COLLATE utf8_general_ci DEFAULT '',
+  `DateAdded`         TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IdCustemer`        INTEGER(5) NOT NULL,
+  `Mony`              INTEGER(9) DEFAULT '0',
+  `Finsh`             ENUM('0','1') DEFAULT '0',
+  `Ref`               VARCHAR(140) COLLATE utf8_general_ci DEFAULT NULL,
+  `tracNumber`        VARCHAR(99) COLLATE utf8_general_ci DEFAULT NULL,
+  `important`         ENUM ('0', '1') DEFAULT '0',
+  `InShowRoomDevices` ENUM ('0', '1') DEFAULT '0',
   PRIMARY KEY (`idDevices`),
   UNIQUE KEY `ID` (`idDevices`)
 )ENGINE=MyISAM
-AUTO_INCREMENT=19 ROW_FORMAT=DYNAMIC
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT='';
+  AUTO_INCREMENT = 63
+  ROW_FORMAT = DYNAMIC
+  CHARACTER SET 'utf8'
+  COLLATE 'utf8_general_ci'
+  COMMENT = '';
 
 #
 # Structure for the `statusdevices` table :
 #
 
 CREATE TABLE `statusdevices` (
-  `ID` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(99) COLLATE utf8_croatian_ci NOT NULL DEFAULT '',
-  `idDevices` INTEGER(9) NOT NULL,
+  `ID`        INTEGER(11)                          NOT NULL AUTO_INCREMENT,
+  `title`     VARCHAR(99) COLLATE utf8_croatian_ci NOT NULL DEFAULT '',
+  `idDevices` INTEGER(9)                           NOT NULL,
+  `DateAdded` TIMESTAMP(0)                         NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=63 ROW_FORMAT=DYNAMIC
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT='';
+  AUTO_INCREMENT = 299
+  ROW_FORMAT = DYNAMIC
+  CHARACTER SET 'utf8'
+  COLLATE 'utf8_general_ci'
+  COMMENT = '';
 
 #
 # Structure for the `typedevices` table :
@@ -93,9 +91,11 @@ CREATE TABLE `typedevices` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
 )ENGINE=MyISAM
-AUTO_INCREMENT=56 ROW_FORMAT=DYNAMIC
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT='';
+  AUTO_INCREMENT = 59
+  ROW_FORMAT = DYNAMIC
+  CHARACTER SET 'utf8'
+  COLLATE 'utf8_general_ci'
+  COMMENT = '';
 
 
 #
@@ -157,11 +157,10 @@ INSERT INTO `typedevices` (`ID`, `NameDevices`, `imageUrl`) VALUES
   (52,'iPod Shuffle Space Gray','1452172993.png'),
   (53,'Apple TV 4','1452173121.jpg'),
   (54,'Apple TV 3','1452173208.png'),
-  (55,'Usp Super Drive','1452427921.jpg');
+  (55, 'Usp Super Drive', '1452427921.jpg'),
+  (56, 'iPhone 5s gold', '1453019766.jpg'),
+  (57, 'apple watch 38m black', '1454864477.jpg'),
+  (58, 'apple watch 42m black', '1456773427.jpg');
 COMMIT;
 
 
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
