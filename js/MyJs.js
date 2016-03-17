@@ -8,6 +8,26 @@
 
 
 
+var FunctionWiting = function () {
+    // create a deferred object
+    var r = $.Deferred();
+
+    // do whatever you want (e.g. ajax/animations other asyc tasks)
+
+    setTimeout(function () {
+        // and call `resolve` on the deferred object, once you're done
+        r.resolve();
+    }, 2500);
+
+    // return the deferred object
+    return r;
+};
+
+
+
+
+
+
 
 //اضافة نوع جهاز
 
@@ -321,7 +341,6 @@ function getLastCustemer() {
 
             $("#cd-cart").waitMe('hide');
 
-            //hideAllPopOver();
         }, error: function (e) {
             notie.alert(3, 'لايمكن تحميل قائمة العملاء', 2.5);
 
@@ -405,7 +424,7 @@ function showListDevices(d) {
     $("#Contener").empty();
 
     $("#Contener").waitMe({effect: 'bounce'});
-    ;
+
 
 
     $.getJSON("json/devices/getListDevices.php?" + $.param(d), function (data) {
@@ -428,6 +447,11 @@ function showListDevices(d) {
                 var div_id = "tmp-id-" + $.now();
                 return details_in_popup($(this).attr('data-poload'), div_id);
             }
+        }).on('shown.bs.popover', function (e) {
+            var popover = jQuery(this);
+            jQuery(this).parent().find('div.popover .closeX').on('click', function (e) {
+                popover.popover('hide');
+            });
         });
 
 
@@ -447,7 +471,7 @@ function showListDevices(d) {
                 url: link,
                 success: function (response) {
                     $('#' + div_id).html(response);
-                    $("#Contener").waitMe('hide');
+                    $(div).waitMe('hide');
                 }
             });
             return $(div).waitMe({effect: 'bounce'});
@@ -502,6 +526,7 @@ $(document).ready(function () {
 
 
     //displayListMenu(true);
+
 
     $('[data-toggle="popover"]').popover({html: true});
 
@@ -816,6 +841,14 @@ function editImportantDevices(IDdevices) {
 
     $("#loadImportant").waitMe({effect: 'pulse'});
 
+    var offest = $("#loadImportant").offset();
+
+    move('.greenColor')
+        .translate(offest)
+        .end();
+
+
+
 
     $.ajax({
         type: "POST",
@@ -826,10 +859,10 @@ function editImportantDevices(IDdevices) {
 
         success: function (data) {
 
-            notie.alert(data.idMsg, data.msg, 2.5);
 
-
-            ImportantDevicesNotF();
+            $.when(ImportantDevicesNotF()).done(function () {
+                notie.alert(data.idMsg, data.msg, 2.5);
+            });
 
         },
         error: function (e) {
@@ -849,6 +882,8 @@ function editImportantDevices(IDdevices) {
  */
 function editInShowRoomDevices(IDdevices) {
 
+    $('#loadInshowRoom').waitMe({effect: 'pulse'});
+
     $.ajax({
         type: "POST",
         url: 'json/devices/editInShowRoomDevices.php',
@@ -858,8 +893,13 @@ function editInShowRoomDevices(IDdevices) {
 
         success: function (data) {
 
-            notie.alert(data.idMsg, data.msg, 2.5);
-            InShowRoomNotF();
+
+            $.when(InShowRoomNotF()).done(function () {
+                notie.alert(data.idMsg, data.msg, 2.5);
+            });
+
+
+
         },
         error: function (e) {
             notie.alert(3, 'Error Respnse Paramter', 2.5);
@@ -1051,7 +1091,6 @@ function editDevicesType(id) {
     $('#editDevicesTypeModal').on('show.bs.modal', function (event) {
 
 
-        $('#editDevicesTypeModal').waitMe({effect: 'pulse', sizeW: '10px', sizeH: '10px'});
 
 
         var button = $(event.relatedTarget) // Button that triggered the modal
