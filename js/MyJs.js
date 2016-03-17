@@ -454,7 +454,7 @@ function showListDevices(d) {
             });
         });
 
-
+ 
         function details_in_popup(link, div_id) {
 
 
