@@ -4,7 +4,9 @@
  * @constructor
  */
 
- 
+
+
+
 
 
 //اضافة نوع جهاز
@@ -327,6 +329,17 @@ function getLastCustemer() {
 
 
 }
+
+
+// تفعيل البحث عن اللصق
+
+$("#searchID").bind("paste", function (e) {
+    // access the clipboard using the api
+    var pastedData = e.originalEvent.clipboardData.getData('text');
+    searchForm(pastedData);
+
+});
+
 
 
 // بحث عن عميل
