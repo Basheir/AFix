@@ -38,12 +38,12 @@ foreach ($InVoice as $v) {
 
     echo "
 
-
+ 
 <table>
     <thead>
     <tr>
 
-            <img alt=\"Logo\" class='logo' src='" . IMAGEURL . "/4tech.png' height=\"50\"  width=\"150\">
+            <img alt=\"Logo\" class='logo' src='" . IMAGEURL . "/4techNew.png' height=\"50\"  width=\"150\">
 
     </tr>
     <tr>
