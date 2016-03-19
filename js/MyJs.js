@@ -338,6 +338,9 @@ $("#searchID").bind("paste", function (e) {
     var pastedData = e.originalEvent.clipboardData.getData('text');
     searchForm(pastedData);
 
+
+    $('#serachLoading').waitMe(({effect: 'bounce'}));
+
 });
 
 
@@ -388,6 +391,7 @@ function searchForm() {
 
 
             displayListMenu(true);
+            $('#serachLoading').waitMe('hide');
 
         },
         error: function (e) {
