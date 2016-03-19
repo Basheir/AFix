@@ -62,7 +62,7 @@ echo creatAppendMenu($devicesN['MobileNumber'], 'glyphicon-phone-alt');
 echo creatAppendMenu($devicesN['tracNumber'], 'glyphicon-plane');
 echo creatAppendMenu($devicesN['Ref'], 'glyphicon-pushpin');
 echo creatAppendMenu($devicesN['Comment'], 'glyphicon glyphicon-qrcode');
-echo creatAppendMenu($devicesN['Mony'], 'fa fa-credit-card fa-2 fa-RedColor');
+echo creatAppendMenu($devicesN['Mony'], 'glyphicon glyphicon-usd ');
 
 
 echo '<ul/>';
