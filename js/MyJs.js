@@ -7,28 +7,6 @@
 
 
 
-
-var FunctionWiting = function () {
-    // create a deferred object
-    var r = $.Deferred();
-
-    // do whatever you want (e.g. ajax/animations other asyc tasks)
-
-    setTimeout(function () {
-        // and call `resolve` on the deferred object, once you're done
-        r.resolve();
-    }, 2500);
-
-    // return the deferred object
-    return r;
-};
-
-
-
-
-
-
-
 //اضافة نوع جهاز
 
 function AddNewDevices() {
