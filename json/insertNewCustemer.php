@@ -18,6 +18,7 @@ $commentPost = $db->escape($_POST['Comment']);
 $IDTypeDevicePost = (int)$_POST['IDTypeDevice'];
 $monyPost = (int)$_POST['Mony'];
 $serialPost = $db->escape($_POST['Serial']);
+$SizeMemoryPost = $db->escape($_POST['SizeMemoryDevice']);
 
 
 /*
@@ -80,7 +81,8 @@ if ($IDCusremer) {
         'Comment' => trim($commentPost),
         'IDTypeDevice' => $IDTypeDevicePost,
         'Mony' => $monyPost,
-        'IdCustemer' => $IDCusremer
+        'IdCustemer' => $IDCusremer,
+        'SizeMemoryDevice' => $SizeMemoryPost
     );
 
     $insertNewDevices = $db->insert('Devices', $devicesData);
@@ -128,7 +130,9 @@ if ($IDCusremer) {
             'Comment' => trim($commentPost),
             'IDTypeDevice' => $IDTypeDevicePost,
             'Mony' => $monyPost,
-            'IdCustemer' => $insertCoustemer
+            'IdCustemer' => $insertCoustemer,
+            'SizeMemoryDevice' => $SizeMemoryPost
+
         );
 
 
