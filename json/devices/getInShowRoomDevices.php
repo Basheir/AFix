@@ -21,7 +21,7 @@ FROM
   INNER JOIN typedevices ON (devices.IDTypeDevice = typedevices.ID)
   INNER JOIN coustemers ON (devices.IdCustemer = coustemers.ID)
 
-  WHERE   devices.InShowRoomDevices = "1" AND Finsh !="1"
+  WHERE   devices.InShowRoomDevices = "1" AND devices.Finsh ="0"
 
 
 GROUP BY
