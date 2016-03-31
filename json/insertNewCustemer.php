@@ -18,7 +18,7 @@ $commentPost = $db->escape($_POST['Comment']);
 $IDTypeDevicePost = (int)$_POST['IDTypeDevice'];
 $monyPost = (int)$_POST['Mony'];
 $serialPost = $db->escape($_POST['Serial']);
-$SizeMemoryPost = $db->escape($_POST['SizeMemoryDevice']);
+$SizeMemoryPost = $db->escape($_POST['SizeMemoryDeviceTitle']);
 
 
 /*

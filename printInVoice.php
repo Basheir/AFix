@@ -58,7 +58,10 @@ foreach ($InVoice as $v) {
     </tr>
     <tr>
         <td>
-  $v[NameDevices]</td>
+  $v[NameDevices] - 
+   <br/>
+   $v[SizeMemoryDevice]GB
+   </td>
         <td class=\"item-price\">نوع الجهاز </td>
     </tr>
     <tr>
