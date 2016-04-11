@@ -38,10 +38,16 @@ foreach ($InVoice as $v) {
 
     echo "
 
- 
 <table>
     <thead>
     <tr>
+
+             <img alt='testing' src='Class/BarCode.php?text=$v[idDevices]' />
+
+
+    </tr> 
+     
+     <tr>
 
             <img alt=\"Logo\" class='logo' src='" . IMAGEURL . "/4techNew.png' height=\"50\"  width=\"150\">
 
