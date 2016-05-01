@@ -5,17 +5,16 @@
 include('../../config.php');
 
 //
-//@$p=$_POST['notie-input-field'];
-//
-//if (trim($p) != null) {
-//    $infoList = $db->where("Comment LIKE '$_POST[$p]' ");
-//
-//}
+@$p = $_POST['notie-input-field'];
 
-$infoList = $db->get('devices');
+if (trim($p) != null) {
+    $infoList = $db->where("Comment LIKE '$_POST[$p]' ");
+
+}
 
 
-echo $db->jsonBuilder()->get('devices', null, 'Comment');
+$db->groupBy('title');
+echo $db->jsonBuilder()->get('statusdevices', null, 'title');
 
  
 ?>
