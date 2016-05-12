@@ -23,7 +23,7 @@ if ($infoList) {
 
     $result = array(
         'suc' => true,
-        'msg' => 'تم اضافة رقم المرجع',
+        'msg' => 'تم اضافة رقم بوليصة الشحن',
         'idMsg' => 1
     );
 

@@ -29,8 +29,14 @@
 
         </div>
 
+
         <div class="panel-footer clearfix">
             <div class="pull-right"> </div>
+
+
+
+
+
             <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="showModel(${idDevices})"
                     class="close" aria-label="Close" data-original-title="اضافة حالة"><span
                     class="glyphicon glyphicon-plus toolsHeader"></span></button>
@@ -72,6 +78,13 @@
                     class="close" aria-label="Close" data-original-title="وصل المعرض"><span
                     class="fa fa-ambulance  toolsHeader panel {{if InShowRoomDevices==1}} greenColor{{else}}redColor {{/if}}"></span>
             </button>
+
+
+            <button
+                    class="close" aria-label="Close"><span idDevice="${idDevices}"
+                    class="fa fa-bars  toolsHeader ToolBarStatus"></span>
+            </button>
+
 
 
         </div>

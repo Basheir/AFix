@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="css/easy-autocomplete.themes.css">
     <link href="css/ggpopover.min.css" rel="stylesheet"/>
     <link href="js/plugins/waitMe/waitMe.css" rel="stylesheet"/>
+    <link href="js/plugins/toolbar/jquery.toolbar.css" rel="stylesheet"/>
+    <link href="js/plugins/notie/notie.css" rel="stylesheet"/>
 
 
 </head>
@@ -125,8 +127,8 @@
                         <li class="dropdown" loading="true" id="loadImportant">
                             <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic"
                                data-toggle="dropdown">
-                                <i class="fa fa-eye"></i><span id="dropdownMenuBdgImportant"
-                                                               class="badge badge-success pull-right">0</span></a>
+                                <i id="importantEye" class="fa fa-eye"></i><span id="dropdownMenuBdgImportant"
+                                                                                 class="badge badge-success pull-right">0</span></a>
                             <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
 
                                 <li class="dropdown-menu-list slimscroll tasks">
@@ -323,6 +325,15 @@
 <div class="cd-overlay"></div>
 
 
+<!--ادوات التول بار الخاصة بارسال -->
+<div id="toolbar-options" class="hidden">
+    <a dataID="0" href="#"><i id="0" class="fa fa-phone"></i></a>
+    <a dataID="1" href="#"><i id="1" class="fa fa-commenting"></i></a>
+    <a dataID="2" href="#"><i id="2" class="fa fa-cloud"></i></a>
+    <a dataID="3" href="#"><i id="3" class="fa fa-blind"></i></a>
+</div>
+
+
 <!-- Javascripts -->
 <script src="style/assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="style/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -339,7 +350,7 @@
 <script src="style/assets/plugins/datatables/js/jquery.datatables.js"></script>
 <script src="style/assets/js/modern.min.js"></script>
 <script src="style/assets/plugins/chartsjs/Chart.min.js"></script>
-<script src="js/notie.js"></script>
+<script src="js/plugins/notie/notie.js"></script>
 <script src="js/SimpleAjaxUploader.js"></script>
 <script src="js/jquery.easy-autocomplete.min.js"></script>
 <script src="style/assets/plugins/select2/js/select2.min.js"></script>
@@ -349,6 +360,7 @@
 <script src="js/MyJs.js"></script>
 <script src="js/plugins/waitMe/waitMe.js"></script>
 <script src="js/plugins/move/move.min.js"></script>
+<script src="js/plugins/toolbar/jquery.toolbar.js"></script>
 
 
 <!--تمبلت الخاص بقائمة الاجهزة-->
