@@ -54,6 +54,10 @@ if ($Parm == 'Important') {
 }
 
 
+if ($Parm == 'notFinsh') {
+    $db->where('devices.Finsh', '0');
+}
+
 
 
 
