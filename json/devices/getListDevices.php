@@ -7,6 +7,7 @@ header('Content-Type: application/json');
 $resultData = array();
 @$searchBy = $_GET['by'];
 @$Parm = $_GET['Parm'];
+@$getAll = $_GET['getAll'];
 
 include('../../config.php');
 
@@ -58,13 +59,17 @@ if ($Parm == 'notFinsh') {
     $db->where('devices.Finsh', '0');
 }
 
+if ($getAll == 'true') {
+    $db->where('devices.Finsh', '1');
+}
+
 
 
 
 
 $db->orderBy("devices.Finsh", "asc");
 $db->orderBy("devices.DateAdded", "asc");
-echo $devicesList = $db->JsonBuilder()->get('devices', null, "*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays");
+echo $devicesList = $db->JsonBuilder()->get('devices ', null, '*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays ');
 // $db->get('devices', null, "*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays");
 
 //echo $db->getLastQuery();
