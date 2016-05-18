@@ -8,6 +8,8 @@ $resultData = array();
 @$searchBy = $_GET['by'];
 @$Parm = $_GET['Parm'];
 @$getAll = $_GET['getAll'];
+$limit = null;
+@$lastID = $_GET['lastID'];
 
 include('../../config.php');
 
@@ -61,6 +63,8 @@ if ($Parm == 'notFinsh') {
 
 if ($getAll == 'true') {
     $db->where('devices.Finsh', '1');
+    $db->where('idDevices', $lastID, ">");
+    $limit = 8;
 }
 
 
@@ -69,9 +73,10 @@ if ($getAll == 'true') {
 
 $db->orderBy("devices.Finsh", "asc");
 $db->orderBy("devices.DateAdded", "asc");
-echo $devicesList = $db->JsonBuilder()->get('devices ', null, '*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays ');
-// $db->get('devices', null, "*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays");
+$devicesList = $db->JsonBuilder()->get('devices ', $limit, '*,DATEDIFF(NOW(),devices.DateAdded) AS totalDays ');
 
+
+echo $devicesList;
 //echo $db->getLastQuery();
 
 
