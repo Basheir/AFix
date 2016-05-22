@@ -4,10 +4,21 @@
  */
 
 
-$maxDate = 25;
-
 include('../../config.php');
 include('../../Class/functions.php');
+include('../../json/getSetting.php');
+
+
+//
+
+$maxDate = $settingArray['maxDate'];
+if ((int)$maxDate == 0) {
+    // القيمة الافتراضية للتاريخ ان لم يكن صحيحا
+    $maxDate = 25;
+}
+
+
+
 
 $resultImploud = array();
 
