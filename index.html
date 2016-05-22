@@ -25,7 +25,7 @@
     <link href="style/assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="style/assets/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
@@ -40,7 +40,6 @@
     <link href="js/plugins/waitMe/waitMe.css" rel="stylesheet"/>
     <link href="js/plugins/toolbar/jquery.toolbar.css" rel="stylesheet"/>
     <link href="js/plugins/notie/notie.css" rel="stylesheet"/>
-
 
 </head>
 
@@ -177,8 +176,15 @@
 
                                     </ul>
                                 </li>
-                                <li class="drop-all"><a href="#" class="text-center">تاريخها تعدى 25 يوم</a></li>
+                                <li id="jsonMaxDate" class="drop-all"><a href="#" class="text-center">تاريخها تعدى 25
+                                    <يوم></يوم>
+                                </a></li>
+                                <input type="text" id="amount" readonly
+                                       style="border:0; color:#f6931f; font-weight:bold;">
+                                <div id="slider-range-min"></div>
+
                             </ul>
+
 
                         </li>
 
