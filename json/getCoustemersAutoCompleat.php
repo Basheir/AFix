@@ -10,9 +10,13 @@ $resultData=array();
 include('../config.php');
 
 
+if (isset($_POST['c'])) {
+    $infoList = $db->where("Name LIKE '%$_POST[c]%' ");
+
+}
 
 
-$infoList = $db->where("Name LIKE '%$_POST[c]%' ");
+
 $infoList = $db->get('Coustemers');
 
 
