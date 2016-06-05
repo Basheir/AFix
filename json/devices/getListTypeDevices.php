@@ -2,12 +2,7 @@
     <div class="panel info-box panel-white">
         <div class="panel-body">
 
-            <!-- Button trigger modal -->
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalImagesViewrer">
-                Launch demo modal
-            </button>
-
-
+      
             <?php
 
             $resultData = array();
