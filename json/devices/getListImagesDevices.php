@@ -4,7 +4,7 @@
     include('../../config.php');
     $ID = (int)$_GET['ID'];
 
-    $images = glob('../../imageDevices/*.{jpeg,gif,png}', GLOB_BRACE);
+    $images = glob('../../imageDevices/*.{jpeg,gif,png,jpg}', GLOB_BRACE);
 
     foreach ($images as $value) {
 
