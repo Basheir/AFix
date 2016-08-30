@@ -18,43 +18,58 @@ if ((int)$maxDate == 0) {
 }
 
 
+/**
+ * معالجة عدد الاجهزة
+ * @param $arr
+ * @param $maxDate
+ * @return int
+ */
+
+function getTotalType($arr,$maxDate){
+
+    $count=0;
+
+    foreach ($arr as $val){
+
+        if ($val['totalDays']>=$maxDate){
+
+            $count++;
+        }
+
+    }
+
+    return $count;
+}
 
 
-$resultImploud = array();
-
-$devicesN = $db->rawQuery('
-
-    SELECT
-  COUNT(devices.Finsh) AS C,
-  devices.IDTypeDevice AS T,
-  typedevices.NameDevices AS N
-FROM
-  devices
-  INNER JOIN typedevices ON (devices.IDTypeDevice = typedevices.ID)
-
-  WHERE   DATE(devices.DateAdded) > ' . $maxDate . ' AND  devices.Finsh !="1"
 
 
-GROUP BY
-  devices.IDTypeDevice
 
-');
+$devicesN = $db->get('typedevices');
 
 
-foreach ($devicesN as $v) {
+$devicesItems=array();
+
+foreach ($devicesN as $value){
 
 
-    $resultImploud[] = array('type' => $v['N'], 'count' => $v['C'], 'IDTypeDevice' => $v['T']);
+    $IDArray=$value['ID'];
+
+    $db->where('IDTypeDevice',$IDArray);
+    $db->where('Finsh','0');
+    $q=$db->get('devices',null,"*,DATEDIFF(NOW(),DateAdded) AS totalDays");
+    $c=getTotalType($q,$maxDate);
+
+
+    if ($c>0){
+        $devicesItems[]=array('type'=>$value['NameDevices'],'count'=>$c,'IDTypeDevice'=>$IDArray);
+
+    }
 
 }
 
 
-//
-//echo $db->getLastQuery();
-//
-//
-//exit;
-echo json_encode($resultImploud);
+echo json_encode($devicesItems);
 
 
 ?>

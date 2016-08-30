@@ -1,6 +1,6 @@
 <script id="DevicesListTemplate" type="x-jquery-tmpl">
 <div class="col-sm-3">
-    <div class="panel {{if Finsh==1}} panel-success{{else}}panel-danger {{/if}}">
+    <div class="panel {{if Finsh==1}} panel-success{{else}}panel-danger {{/if}} {{if InShowRoomDevices==1}} blackColor{{/if}}">
         <div class="panel-heading">
 
             <p   class="panel-title ">${NameDevices}</p>
@@ -85,6 +85,7 @@
                     class="fa fa-bars  toolsHeader ToolBarStatus"></span>
             </button>
 
+            <span style="text-transform: uppercase;color: blue;">${Serial}</span>
 
 
         </div>

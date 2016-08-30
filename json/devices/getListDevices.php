@@ -13,6 +13,14 @@ $limit = null;
 
 include('../../config.php');
 
+include('../../json/getSetting.php');
+
+
+
+
+
+
+
 
 $db->join("typedevices", "devices.IDTypeDevice = typedevices.ID", "LEFT");
 
@@ -48,7 +56,7 @@ if ($Parm == 'InShowRoom') {
 
 
 if ($Parm == 'MaxDate') {
-    $db->where('DATEDIFF(NOW(),devices.DateAdded)', 25, ">=");
+    $db->where('DATEDIFF(NOW(),devices.DateAdded)', $settingArray['maxDate'], ">=");
 }
 
 

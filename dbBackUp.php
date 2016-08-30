@@ -15,7 +15,7 @@ set_time_limit(0);
 $time = microtime(TRUE);
 ignore_user_abort(TRUE);
 $dump = new MySQLDump(new mysqli($dataInfoArray['host'] . ":$dataInfoArray[port]", $dataInfoArray['username'], $dataInfoArray['password'], $dataInfoArray['db']));
-$dump->save(DIR_SYSTEM . '/b/dump' . date('Y-m-d H-i') . $time . '.sql.gz');
+$dump->save('C:/Users/win/OneDrive/AFix/AFix['.date('Y-m-d--H-i-s').'].sql.gz');
 
 echo "تم اخذ نسخة احتياطية بنجاح ";
 
