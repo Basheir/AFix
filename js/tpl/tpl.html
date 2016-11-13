@@ -25,10 +25,17 @@
 
             <div class="imgListDevices">
                 <img src="./imageDevices/${imageUrl}" alt="img">
-            </div>
 
         </div>
 
+          <span style="text-transform: uppercase;color: blue;">${Serial}</span>
+
+                                                                                                       <!--نسخ الرقم التسلسلي-->
+
+            <button class="btn btn-default clipboard" data-clipboard-demo="" data-clipboard-action="copy" data-clipboard-text="${Serial}">نسخ</button>
+
+
+            </div>
 
         <div class="panel-footer clearfix">
             <div class="pull-right"> </div>
@@ -85,7 +92,7 @@
                     class="fa fa-bars  toolsHeader ToolBarStatus"></span>
             </button>
 
-            <span style="text-transform: uppercase;color: blue;">${Serial}</span>
+
 
 
         </div>

@@ -44,7 +44,12 @@
 </head>
 
 
-<body class="page-header-fixed">
+<body class="page-header-fixed waitMe_body">
+<div class="waitMe_container img" style="background:#fff">
+    <div style="background:url('images/loadingBody.gif')"></div>
+</div>
+
+
 <div class="overlay"></div>
 
 
@@ -397,14 +402,21 @@
 <script src="style/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
 <script src="style/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
 <script src="js/plugins/jqueryTmpl/jquery.tmpl.js"></script>
-<script src="js/MyJs.js"></script>
 <script src="js/plugins/waitMe/waitMe.js"></script>
 <script src="js/plugins/move/move.min.js"></script>
 <script src="js/plugins/toolbar/jquery.toolbar.js"></script>
-
+<script src="js/plugins/clipboard/clipboard.min.js"></script>
+<script src="js/MyJs.js"></script>
 
 <!--تمبلت الخاص بقائمة الاجهزة-->
 
-
+<div id="card">
+    <div class="front">
+        Front content
+    </div>
+    <div class="back">
+        Back content
+    </div>
+</div>
 </body>
 </html>
