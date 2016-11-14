@@ -13,23 +13,29 @@ define('HTTPS_SERVER', '127.0.0.1/AFix/');
 // معرفات الثوابت الاساسية للسكربت
 
 define('DIR_APPLICATION', "/AFix/");
-define('DIR_SYSTEM', '/Applications/XAMPP/xamppfiles/htdocs/AFix/');
+define('DIR_SYSTEM', 'C:/xampp/htdocs/AFix/');
 define('SITURL', $_SERVER['SERVER_NAME']);
-define('IMAGEDEVICES', '/Applications/XAMPP/xamppfiles/htdocs/AFix/imageDevices/');
+define('IMAGEDEVICES', 'C:/xampp/htdocs/AFix/imageDevices/');
 define('IMAGEDEVICESURL', 'http://' . SITURL . DIR_APPLICATION . '/imageDevices/');
 define('IMAGEURL', 'http://' . SITURL . DIR_APPLICATION . '/images/');
 define('IMAGSFOLDR', SITURL . '/images/');
 
 
+
+
+
 // متغيرات الاتصال بقاعدة البيانات
-$db = new MysqliDb (Array(
-    'host' => 'localhost',
+
+$dataInfoArray=Array(
+    'host' => '127.0.0.1',
     'username' => 'root',
     'password' => '',
-    'db' => 'AFix',
+    'db' => 'afix',
     'port' => 3306,
     'prefix' => '',
-    'charset' => 'utf8'));
+    'charset' => 'utf8');
 
+
+$db = new MysqliDb ($dataInfoArray);
 
 ?>
