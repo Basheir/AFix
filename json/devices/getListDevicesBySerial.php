@@ -13,22 +13,12 @@ $limit = null;
 
 include('../../config.php');
 
-include('../../json/getSetting.php');
 
+include_once ('../../Class/DevicesApi.php');
 
+$devicesApi=new DevicesApi($dataInfoArray);
+echo $devicesApi->getDevicesBySeiral("%$_GET[c]");
 
-
-
-$db->where('Serial','%'.$_GET['c'], "LIKE");
-
-
-
-$db->join("coustemers", "devices.IdCustemer = coustemers.ID", "LEFT");
-$devicesList = $db->JsonBuilder()->get('devices');
-
-
-echo $devicesList;
-//echo $db->getLastQuery();
 
 
 ?>
