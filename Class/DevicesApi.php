@@ -17,11 +17,10 @@ class DevicesApi extends MysqliDb
      * @return array  اعادة الناتج جسون
      */
 
-    public function getDevicesBySeiral($v,$oper='LIKE'){
-        $this->where('Serial',$v, $oper);
+    public function getDevicesBySeiral(){
+
         $this->join("coustemers", "devices.IdCustemer = coustemers.ID", "LEFT");
         return $this->JsonBuilder()->get('devices');
-
 
     }
 

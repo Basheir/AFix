@@ -17,7 +17,7 @@ include('../../config.php');
 include_once ('../../Class/DevicesApi.php');
 
 $devicesApi=new DevicesApi($dataInfoArray);
-echo $devicesApi->getDevicesBySeiral("%$_GET[c]");
+echo $devicesApi->getDevicesBySeiral();
 
 
 
