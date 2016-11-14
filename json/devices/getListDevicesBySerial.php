@@ -22,6 +22,8 @@ include('../../json/getSetting.php');
 $db->where('Serial','%'.$_GET['c'], "LIKE");
 
 
+
+$db->join("coustemers", "devices.IdCustemer = coustemers.ID", "LEFT");
 $devicesList = $db->JsonBuilder()->get('devices');
 
 
