@@ -3,7 +3,7 @@
     <div class="panel {{if Finsh==1}} panel-success{{else}}panel-danger {{/if}} {{if InShowRoomDevices==1}} blackColor{{/if}}">
         <div class="panel-heading">
 
-            <p   class="panel-title ">${NameDevices}</p>
+           <p   class="panel-title "><i onclick="addAlert(${idDevices});" class="fa fa-2x btn text-success fa-bell-o" aria-hidden="true"></i>${NameDevices}</p>
 
 
             <button type="button" data-poload="json/devices/getInfoDevice.php?&ID=${idDevices}"  data-placement="bottom"

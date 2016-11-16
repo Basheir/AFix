@@ -12,8 +12,7 @@ class DevicesApi extends MysqliDb
 
 
     /**
-     * @param $v
-     * @param string $oper
+
      * @return array  اعادة الناتج جسون
      */
 
