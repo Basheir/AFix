@@ -82,9 +82,9 @@ if (isset($_GET['hideAlert'])) {
  */
 
 if (isset($_GET['getAlert'])) {
-echo  $alertApi->getAlerDevices();
+echo   $alertApi->getAlerDevices();
 
-//    echo $alertApi->getLastQuery();
+//   echo $alertApi->getLastQuery();
     exit();
 }
 

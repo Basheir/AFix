@@ -20,7 +20,7 @@ class AlertApi extends MysqliDb
     public function getAlerDevices(){
 
         $this->where('isShow','1');
-        $this->join("devices", "alert.id = devices.idDevices", "INNER");
+        $this->join("devices", "alert.idDevices = devices.idDevices", "INNER");
         $this->join("coustemers", "devices.IdCustemer=coustemers.ID", "INNER");
         return  $this->JsonBuilder()->get('alert');
 
