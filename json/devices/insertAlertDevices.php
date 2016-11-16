@@ -43,7 +43,12 @@ if ($db->count > 0) {
 }
 else{
 
-    $result= $db->getLastError();
+   
+    $result = array(
+        'suc' => false,
+        'msg' => $db->getLastError(),
+        'idMsg' => 1
+    );
 }
 
 
