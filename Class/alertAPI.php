@@ -7,7 +7,7 @@
  * Date: 14‏/11‏/2016
  * Time: 10:07 ص
  */
-class DevicesAlertApi extends MysqliDb
+class AlertApi extends MysqliDb
 {
 
 
@@ -24,12 +24,10 @@ class DevicesAlertApi extends MysqliDb
         $this->join("coustemers", "devices.idDevices=coustemers.ID", "INNER");
         return  $this->JsonBuilder()->get('alert');
 
-
-
     }
 
 
-    public function setStatusDevices($id,$s){
+    public function setStatusAlert($id,$s){
 
         $data = array('isShow' => $s);
         $this->where('id', (int)$id);
