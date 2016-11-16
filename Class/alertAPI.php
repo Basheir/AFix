@@ -30,7 +30,7 @@ class AlertApi extends MysqliDb
     public function setStatusAlert($id,$s){
 
         $data = array('isShow' => $s);
-        $this->where('id', (int)$id);
+        $this->where('idAlert', (int)$id);
 
        return  $this->update('alert', $data);
 
