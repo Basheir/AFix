@@ -51,9 +51,19 @@
                     class="close" aria-label="Close" data-original-title="انهاء حالة الجهاز"><span
                     class="glyphicon glyphicon-ok redColor  toolsHeader"></span></button>
 
-            <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="printDevice(${idDevices})"
-                    class="close" aria-label="Close" data-original-title="طباعة الفاتورة"><span
-                    class="glyphicon glyphicon-print toolsHeader"></span></button>
+
+
+                        <div class="dropdown pull-right">
+                          <button class="btn btn-default dropdown-toggle toolsHeader" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            طباعة فاتورة
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a onclick="printDevice(${idDevices},0);" href="#">طباعة</a></li>
+                            <li><a onclick="printDevice(${idDevices},1);" href="#">طباعة- 4Tech</a></li>
+                          </ul>
+                        </div>
+
 
             <button type="button" data-toggle="tooltip" data-placement="top" title="" onclick="editRefDevices(${idDevices})"
                     class="close" aria-label="Close" data-original-title="اضافة رقم المرجع"><span
@@ -101,6 +111,7 @@
 
 
 
+
 </script>
 
 
@@ -112,6 +123,7 @@
  </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
  <p class="task-details">${type}</p></a>
  </li>
+
 </script>
 
 
@@ -123,6 +135,7 @@
  </div><span class="badge badge-roundless badge-default pull-right">${count}</span>
  <p class="task-details">${type}</p></a>
  </li>
+
 
 </script>
 
@@ -136,6 +149,7 @@
  <p class="task-details">${type}</p></a>
  </li>
 
+
 </script>
 
 
@@ -148,16 +162,15 @@
  <p class="task-details">${type}</p></a>
  </li>
 
+
 </script>
-
-
-
 
 
 <!-- تمبلت الخاص بعرض العملاء -->
 
 <script id="ListCustemerTpl" type="x-jquery-tmpl">
 <a  onclick="showListDevices({by:'ID',ID:${ID}});" href="#${ID}" class="showRight2"><img src="icons/custemers.png" alt=""><span>${Name}<small>${DateAdded}</small></span></a>
+
 
 </script>
 

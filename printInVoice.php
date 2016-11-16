@@ -36,6 +36,24 @@ $InVoice = $db->rawQuery('SELECT * FROM devices INNER JOIN coustemers ON (device
 foreach ($InVoice as $v) {
 
 
+    if ($_GET['t']>0){
+
+        $name='فورتك';
+        $MobileNumber="0144249930";
+        $Mony='';
+    }
+    else {
+        $Mony="<tr>
+              <td>$v[Mony]</td>
+              <td>مبلغ الصيانة</td>
+              </tr>";
+        $name=$v['Name'];
+        $MobileNumber=$v['MobileNumber'];
+
+
+    }
+
+
     echo "
 
 <table>
@@ -57,12 +75,16 @@ foreach ($InVoice as $v) {
     </tr>
     </thead>
     <tbody>
+    
+    
+    
     <tr>
         <td>
-  $v[Name] </td>
+  $name </td>
         <td class=\"item-price\">الاسم</td>
     </tr>
     <tr>
+    
         <td>
   $v[NameDevices] - 
    <br/>
@@ -86,12 +108,9 @@ foreach ($InVoice as $v) {
         <td>$v[Comment]</td>
         <td>ملاحظة</td>
     </tr>
+    $Mony
     <tr>
-        <td>$v[Mony]</td>
-        <td>مبلغ الصيانة</td>
-    </tr>
-    <tr>
-        <td>$v[MobileNumber]</td>
+        <td>$MobileNumber</td>
         <td>رقم الهاتف:</td>
     </tr>
 
