@@ -40,4 +40,16 @@ class DevicesAlertApi extends MysqliDb
     }
 
 
+    public function addStatusDevices($dataArray){
+
+       return $this->insert('alert', $dataArray);
+
+
+    }
+
+
+
+
+
+
 }
