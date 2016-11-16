@@ -50,6 +50,12 @@ if ($searchBy == 'ID') {
 }
 
 
+if ($searchBy == 'idDevices') {
+    $db->where('idDevices', (int)$_GET['ID']);
+}
+
+
+
 if ($Parm == 'InShowRoom') {
     $db->where('InShowRoomDevices', '1');
 }
