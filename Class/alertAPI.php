@@ -32,7 +32,9 @@ class AlertApi extends MysqliDb
         $data = array('isShow' => $s);
         $this->where('idAlert', (int)$id);
 
-       return  $this->update('alert', $data);
+         $this->update('alert', $data);
+
+        echo $this->getLastQuery();
 
 
     }
