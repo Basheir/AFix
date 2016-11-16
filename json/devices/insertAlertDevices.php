@@ -41,6 +41,10 @@ if ($db->count > 0) {
     );
 
 }
+else{
+
+    $result= $db->getLastError();
+}
 
 
 echo json_encode($result);
