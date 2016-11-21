@@ -44,3 +44,30 @@ function listMobileNumber($arr)
 
 
 
+function jsonMsg($q,$erMsg=null,$sucMsg=null){
+
+
+
+
+    if ($q){
+        return   [
+            'suc'   => true,
+            'msg'   => 'تمت العملية بنجاح'.$sucMsg,
+            'id' => 1
+        ];
+    }
+    else{
+        return   [
+            'suc'   => false,
+            'msg'   => 'هناك خطاء اعد المحاوالة لاحقا'.$erMsg,
+            'id' => 0
+        ];
+    }
+
+
+
+
+}
+
+
+

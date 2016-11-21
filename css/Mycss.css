@@ -86,106 +86,41 @@
 	margin: auto;
 	top: 50%;
 	left: 50%;
-
-
 }
 
 
-#exported:nth-child(2n+0){
-	background-color: #c7ddef;
-}
 
-
-.popover{
-	min-width: 350px;
+.imgListDevicesTrackNumber  {
+	height: 200px;
 	min-height: 200px;
-}
-
-
-
-.redHr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #cc0510;
-	margin: 1em 0;
-	padding: 0;
-}
-
-
-.listCustemers{
-	width: 20%;
-}
-
-
-.fa-RedColor {
-  color: red;
-}
-
-.panel-actions {
-	margin-top: -20px;
-	margin-bottom: 0;
-	text-align: right;
-}
-
-.panel-actions a {
-	color: #333;
-}
-
-.panel-fullscreen {
-	display: block;
-	z-index: 9999;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
 	overflow: auto;
+	margin: auto;
+	top: 50%;
+	left: 50%;
 }
 
-.navbar .navbar-search .dropdown-menu {
-	min-width: 100px;
-}
+.imgW{
+	height: 90px;
+	width: 180px;
 
-.dropdown-menu .label-icon {
-	margin-left: 20px;
-}
-
-.btn-outline {
-	background-color: transparent;
-	color: inherit;
-	transition: all .5s;
-}
-
-.nav.nav-center {
-	display: inline-block;
-	left: 0;
-	right: 0;
-	margin: 0;
-	float: none;
-}
-
-.navbar-inner {
-	text-align: center;
-}
-
-.ui-autocomplete {
-	z-index: 9999 !important;
-}
-
-.imglistTypeDevices {
-	height: 150px;
-	width: 150px;
-}
-
-.modal-body {
-	max-height: calc(100vh - 210px);
-	overflow-y: auto;
 }
 
 
 
 
+.imgListDevicesCenter  {
+	height: 330px;
+	min-height: 330px;
+	overflow: auto;
+	margin: auto;
+	top: 50%;
+	left: 50%;
 
+
+}
+
+
+
+.hideElment{
+	display: none;
+}

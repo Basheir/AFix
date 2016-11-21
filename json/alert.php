@@ -1,96 +1,96 @@
 <?php
-//*
+    //*
 
-header('Content-Type: application/json');
+    header('Content-Type: application/json');
 
-$result = array(
-    'suc' => false,
-    'msg' => 'خطا :: حاول مرة اخرى',
-    'idMsg' => 3
-);
+    $result = [
+        'suc'   => false,
+        'msg'   => 'خطا :: حاول مرة اخرى',
+        'idMsg' => 3
+    ];
 
-
-include('../config.php');
-include_once('../Class/alertAPI.php');
-$alertApi = new AlertApi($dataInfoArray);
-
-
-/**
- * اضافة تنبيه للاجهزة
- */
+    include('../config.php');
+    include_once('../Class/alertAPI.php');
+    $alertApi = new AlertApi($dataInfoArray);
 
 
-if (isset($_GET['addAlert'])) {
-
-    $q = $alertApi->addStatusDevices(array('idDevices' => (int)$_POST['ID'], 'msg' => $db->escape($_POST['msg'])));
-
-    if ($q) {
-
-        $result = array(
-            'suc' => true,
-            'msg' => 'تمت العملية بنجاح',
-            'idMsg' => 1
-        );
-
-    } else {
 
 
-        $result = array(
-            'suc' => false,
-            'msg' => $db->getLastError(),
-            'idMsg' => 3
-        );
+
+
+
+
+
+
+    /**
+     * اضافة تنبيه للاجهزة
+     */
+    if (isset($_GET['addAlert'])) {
+
+        $q = $alertApi->addStatusDevices([ 'idDevices' => (int) $_POST['ID'], 'msg' => $db->escape($_POST['msg']) ]);
+
+        if ($q) {
+
+            $result = [
+                'suc'   => true,
+                'msg'   => 'تمت العملية بنجاح',
+                'idMsg' => 1
+            ];
+
+        }
+        else {
+
+            $result = [
+                'suc'   => false,
+                'msg'   => $db->getLastError(),
+                'idMsg' => 3
+            ];
+        }
+
+
     }
 
+    /**
+     * اخفاء تنبيهات الاجهزة
+     */
 
-}
+    if (isset($_GET['hideAlert'])) {
+
+        $q = $alertApi->setStatusAlert((int) $_POST['id'], $_POST['isShow']);
+
+        if ($q) {
+
+            $result = [
+                'suc'   => true,
+                'msg'   => 'تمت العملية بنجاح',
+                'idMsg' => 1
+            ];
+
+        }
+        else {
+
+            $result = [
+                'suc'   => false,
+                'msg'   => $db->getLastError(),
+                'idMsg' => 3
+            ];
+        }
 
 
-/**
- * اخفاء تنبيهات الاجهزة
- */
-
-if (isset($_GET['hideAlert'])) {
-
-    $q = $alertApi->setStatusAlert((int)$_POST['id'],$_POST['isShow']);
-
-
-    if ($q) {
-
-        $result = array(
-            'suc' => true,
-            'msg' => 'تمت العملية بنجاح',
-            'idMsg' => 1
-        );
-
-    } else {
-
-
-        $result = array(
-            'suc' => false,
-            'msg' => $db->getLastError(),
-            'idMsg' => 3
-        );
     }
 
+    /**
+     * احضار تنبيهات الاجهزة
+     */
 
-}
-
-
-/**
- * احضار تنبيهات الاجهزة
- */
-
-if (isset($_GET['getAlert'])) {
-echo   $alertApi->getAlerDevices();
+    if (isset($_GET['getAlert'])) {
+        echo $alertApi->getAlerDevices();
 
 //   echo $alertApi->getLastQuery();
-    exit();
-}
+        exit();
+    }
 
-
-echo json_encode($result);
-
+    echo json_encode($result);
 
 ?>
 

@@ -53,7 +53,7 @@
 
 
 
-                        <div class="dropdown pull-right">
+                        <div class="dropdown pull-left">
                           <button class="btn btn-default dropdown-toggle toolsHeader" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             طباعة فاتورة
                             <span class="caret"></span>
@@ -173,6 +173,49 @@
 
 
 </script>
+
+
+
+
+
+
+
+<!-- تمبلت الخاص بعرض اجهز الوليصة -->
+
+<script id="trackTmpl" type="x-jquery-tmpl">
+
+
+
+
+  <div  class="col-sm-6 col-md-3">
+
+    <div   class="thumbnail btn div-trackNumber" data-selectStatus="false" data-serial="${Serial}" data-idDevices="${idDevices}">
+    <div class="caption">
+        <kbd>#${idDevices}</kbd><h3>#${idDevices}-${NameDevices}</h3>
+        <p>${Name}</p>
+        <h4 class="text-uppercase">${Serial}</h4>
+        <h5 class="text-uppercase">${trackNumber}</h5>
+        <p>
+            <a href="javascript:addAlert(${idDevices});" class="fa fa-2x btn text-success fa-bell-o" role="button"></a>
+            <a href="javascript:addTrack('${idDevices}');" class="fa fa-2x btn text-success fa-plus" role="button"></a>
+            <a id="tools-${idDevices}" href="#" role="button"></a>
+
+        </p>
+    </div>
+
+</div>
+   </div>
+
+
+
+
+</script>
+
+
+
+
+
+
 
 
 <!--تعديل نوع  الجهاز-->

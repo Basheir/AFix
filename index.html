@@ -40,6 +40,7 @@
     <link href="js/plugins/toolbar/jquery.toolbar.css" rel="stylesheet"/>
     <link href="js/plugins/notie/notie.css" rel="stylesheet"/>
     <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
+    <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
 </head>
 
 
@@ -206,7 +207,7 @@
                     <ul class="nav nav-center">
                         <!--صندوق البحث-->
                         <li>
-                            <div class="nav nav-justified navbar-nav" id="searchbar">
+                            <div class="nav nav-justified " id="searchbar">
 
                                 <form class="navbar-form" role="search">
                                     <div class="input-group">
@@ -216,8 +217,8 @@
                                                style="display: none">
 
                                         <span class="input-group-btn" id="clearSearch">
-			                            <a class="btn btn-default text-muted" href="#" title="Clear"><i
-                                                class="glyphicon glyphicon-remove"></i> </a>
+			                            <a class="btn btn-default text-muted" href="#" title="Clear"><i class="glyphicon glyphicon-remove"></i> </a>
+
 	                                    </span>
                                         <div class="input-group-btn" id="serachLoading">
                                             <button type="button" id="TitleBtnSearch"
@@ -324,6 +325,9 @@
                 <li><a onclick="mysqlBackUp();" href="#getChart" class="waves-effect waves-button"><span
                         class="menu-icon glyphicon glyphicon-stats"></span>
                     <p>نسخ احتياطي</p></a></li>
+                 <li><a onclick="loadTrack();" href="#getTrackNumber" class="waves-effect waves-button"><span
+                                        class="menu-icon glyphicon glyphicon-stats"></span>
+                                    <p>توليد بوليصة شحن</p></a></li>
 
 
             </ul>
@@ -331,6 +335,16 @@
     </div><!-- Page Sidebar -->
     <div class="page-inner">
         <div id="titlePage"></div>
+
+        <div id="ContenerHeadr"  class="row hideElment">
+            <div class="input-group">
+                <input type="text" class="form-control" name="trackNumber" placeholder="اضف رقم البوليصة" aria-describedby="basic-addon2">
+                <span onclick="addTracks();" class="btn input-group-addon">اضافة للبوليصة</span>
+                <span onclick="removeTracks();" class="btn input-group-addon">حذف الكل</span>
+            </div>
+            <br/>
+        </div>
+
 
         <div id="Contener" class="row">
 
