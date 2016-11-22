@@ -88,7 +88,7 @@
                 </a>
             </div>
             <div class="logo-box">
-                <a href="index.html" class="logo-text"><span>4Tech</span></a>
+                <a href="index.php" class="logo-text"><span>4Tech</span></a>
             </div><!-- Logo Box -->
 
             <div class="topmenu-outer">
@@ -196,15 +196,9 @@
                         </li>
 
 
-                        <li>
-
-
-                        </li>
-
-
                     </ul>
 
-                    <ul class="nav nav-center">
+                    <ul class="nav navbar-nav navbar-center">
                         <!--صندوق البحث-->
                         <li>
                             <div class="nav nav-justified " id="searchbar">
@@ -213,8 +207,8 @@
                                     <div class="input-group">
 
                                         <input type="text" class="form-control" name="searchID" id="searchID">
-                                        <input type="text" class="form-control" value="n" name="searchBy" id="searchBy"
-                                               style="display: none">
+                                        <input type="text" class="form-control hidden" value="n" name="searchBy" id="searchBy" >
+
 
                                         <span class="input-group-btn" id="clearSearch">
 			                            <a class="btn btn-default text-muted" href="#" title="Clear"><i class="glyphicon glyphicon-remove"></i> </a>
@@ -392,6 +386,12 @@
 </div>
 
 
+
+<!--تحميل التمبلت-->
+<?php require ('js/tpl/tpl.html'); ?>
+
+
+
 <!-- Javascripts -->
 <script src="style/assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="style/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -420,17 +420,9 @@
 <script src="js/plugins/toolbar/jquery.toolbar.js"></script>
 <script src="js/plugins/clipboard/clipboard.min.js"></script>
 <script src="js/plugins/noty/packaged/jquery.noty.packaged.min.js"></script>
+<script src="js/plugins/navigo/navigo.min.js"></script>
 <script src="js/MyJs.js"></script>
 
-<!--تمبلت الخاص بقائمة الاجهزة-->
 
-<div id="card">
-    <div class="front">
-        Front content
-    </div>
-    <div class="back">
-        Back content
-    </div>
-</div>
 </body>
 </html>
