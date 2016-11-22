@@ -13,34 +13,26 @@
     <link rel="icon" href="images/favicon.ico">
     <!-- Styles -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="style/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
-    <link href="style/assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet"/>
     <link href="style/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <link href="style/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
     <link href="style/assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
     <link href="style/assets/css/custom.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="css/progressBar/css/style.css">
-    <link rel="stylesheet" href="css/Mycss.css">
-    <link rel="stylesheet" href="css/ihover.css">
-    <link href="css/stylesUploadFile.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/assets/css/progressBar/css/style.css">
+    <link rel="stylesheet" href="style/assets/css/ihover.css">
+    <link href="style/assets/css/stylesUploadFile.css" rel="stylesheet">
     <link rel="stylesheet" href="js/plugins/EasyAutocomplete/easy-autocomplete.min.css">
     <link rel="stylesheet" href="js/plugins/EasyAutocomplete/easy-autocomplete.themes.css">
-    <link href="css/ggpopover.min.css" rel="stylesheet"/>
+    <link href="style/assets/css/ggpopover.min.css" rel="stylesheet"/>
     <link href="js/plugins/waitMe/waitMe.css" rel="stylesheet"/>
     <link href="js/plugins/toolbar/jquery.toolbar.css" rel="stylesheet"/>
     <link href="js/plugins/notie/notie.css" rel="stylesheet"/>
     <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
     <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style/assets/css/Mycss.css">
 </head>
 
 
@@ -395,25 +387,15 @@
 <!-- Javascripts -->
 <script src="style/assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="style/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="style/assets/plugins/pace-master/pace.min.js"></script>
-<script src="style/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+<script src="js/plugins/jquery-blockui/jquery.blockui.js"></script>
 <script src="style/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="style/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="style/assets/plugins/switchery/switchery.min.js"></script>
-<script src="style/assets/plugins/uniform/jquery.uniform.min.js"></script>
-<script src="style/assets/plugins/offcanvasmenueffects/js/classie.js"></script>
-<script src="style/assets/plugins/offcanvasmenueffects/js/main.js"></script>
+
 <script src="style/assets/plugins/waves/waves.min.js"></script>
-<script src="style/assets/plugins/3d-bold-navigation/js/main.js"></script>
-<script src="style/assets/plugins/datatables/js/jquery.datatables.js"></script>
 <script src="style/assets/js/modern.min.js"></script>
-<script src="style/assets/plugins/chartsjs/Chart.min.js"></script>
 <script src="js/plugins/notie/notie.js"></script>
 <script src="js/SimpleAjaxUploader.js"></script>
 <script src="js/plugins/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
-<script src="style/assets/plugins/select2/js/select2.min.js"></script>
-<script src="style/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
-<script src="style/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
 <script src="js/plugins/jqueryTmpl/jquery.tmpl.js"></script>
 <script src="js/plugins/waitMe/waitMe.js"></script>
 <script src="js/plugins/move/move.min.js"></script>

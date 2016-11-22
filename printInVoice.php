@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>طباعة الفاتورة</title>
-    <link href="css/printInVoice.css" rel="stylesheet">
+    <link href="style/assets/css/printInVoice.css" rel="stylesheet">
 
 </head>
 <body>
