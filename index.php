@@ -383,7 +383,7 @@
 <?php require ('js/tpl/tpl.html'); ?>
 
 
-
+ 
 <!-- Javascripts -->
 <script src="style/assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="style/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
