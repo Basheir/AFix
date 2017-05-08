@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - afix@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="afix">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="Apps"/>
+    <schema id="3" name="information_schema"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="opencart"/>
+    <schema id="6" name="opencartXXXX"/>
+    <schema id="7" name="performance_schema"/>
+    <schema id="8" name="phpmyadmin"/>
+    <schema id="9" name="test"/>
+    <schema id="10" name="testttttt"/>
+    <table id="11" parent="1" name="alert"/>
+    <table id="12" parent="1" name="coustemers"/>
+    <table id="13" parent="1" name="devices"/>
+    <table id="14" parent="1" name="setting"/>
+    <table id="15" parent="1" name="statusdevices"/>
+    <table id="16" parent="1" name="typedevices"/>
+    <column id="17" parent="11" name="idAlert">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="18" parent="11" name="msg">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="19" parent="11" name="isShow">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <column id="20" parent="11" name="idDevices">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="21" parent="11" name="PRIMARY">
+      <columns>idAlert</columns>
+      <primary>1</primary>
+    </key>
+    <column id="22" parent="12" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="23" parent="12" name="Name">
+      <data-type>varchar(90)|0</data-type>
+    </column>
+    <column id="24" parent="12" name="MobileNumber">
+      <data-type>varchar(140)|0</data-type>
+    </column>
+    <column id="25" parent="12" name="DateAdded">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <index id="26" parent="12" name="ID">
+      <columns>ID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="27" parent="12" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <key id="28" parent="12" name="ID">
+      <columns>ID</columns>
+      <underlying-index>ID</underlying-index>
+    </key>
+    <column id="29" parent="13" name="idDevices">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="30" parent="13" name="Serial">
+      <data-type>varchar(90)|0</data-type>
+    </column>
+    <column id="31" parent="13" name="IDTypeDevice">
+      <data-type>tinyint(3)|0</data-type>
+    </column>
+    <column id="32" parent="13" name="Comment">
+      <data-type>varchar(140)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="33" parent="13" name="DateAdded">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="34" parent="13" name="IdCustemer">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="35" parent="13" name="Mony">
+      <data-type>int(9)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="36" parent="13" name="Finsh">
+      <data-type>enum(&apos;0&apos;, &apos;1&apos;)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="37" parent="13" name="Ref">
+      <data-type>varchar(140)|0</data-type>
+    </column>
+    <column id="38" parent="13" name="tracNumber">
+      <data-type>varchar(99)|0</data-type>
+    </column>
+    <column id="39" parent="13" name="important">
+      <data-type>enum(&apos;0&apos;, &apos;1&apos;)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="40" parent="13" name="InShowRoomDevices">
+      <data-type>enum(&apos;0&apos;, &apos;1&apos;)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="41" parent="13" name="SizeMemoryDevice">
+      <data-type>varchar(4)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="42" parent="13" name="ID">
+      <columns>idDevices</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="43" parent="13" name="PRIMARY">
+      <columns>idDevices</columns>
+      <primary>1</primary>
+    </key>
+    <key id="44" parent="13" name="ID">
+      <columns>idDevices</columns>
+      <underlying-index>ID</underlying-index>
+    </key>
+    <column id="45" parent="14" name="maxDate">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(3)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="46" parent="14" name="search">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <key id="47" parent="14" name="PRIMARY">
+      <columns>maxDate</columns>
+      <primary>1</primary>
+    </key>
+    <column id="48" parent="15" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="49" parent="15" name="title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(99)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="50" parent="15" name="idDevices">
+      <mandatory>1</mandatory>
+      <data-type>int(9)|0</data-type>
+    </column>
+    <column id="51" parent="15" name="DateAdded">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <index id="52" parent="15" name="ID">
+      <columns>ID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="53" parent="15" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <key id="54" parent="15" name="ID">
+      <columns>ID</columns>
+      <underlying-index>ID</underlying-index>
+    </key>
+    <column id="55" parent="16" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="56" parent="16" name="NameDevices">
+      <data-type>varchar(90)|0</data-type>
+    </column>
+    <column id="57" parent="16" name="imageUrl">
+      <mandatory>1</mandatory>
+      <data-type>varchar(140)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <index id="58" parent="16" name="ID">
+      <columns>ID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="59" parent="16" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <key id="60" parent="16" name="ID">
+      <columns>ID</columns>
+      <underlying-index>ID</underlying-index>
+    </key>
+  </database-model>
+</dataSource>
