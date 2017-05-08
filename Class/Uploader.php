@@ -22,7 +22,7 @@ private $fileName;
     private $fileSize;                    // File upload directory (include trailing slash)
     private $fileExtension;            // Array of permitted file extensions
         private $fileNameWithoutExt;         // Max file upload size in bytes (default 10MB)
-    private $savedFile;                  // Optionally save uploaded files with a new name by setting this
+    public $savedFile;                  // Optionally save uploaded files with a new name by setting this
 private $errorMsg;
     private $isXhr;
 

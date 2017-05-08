@@ -36,7 +36,7 @@ $InVoice = $db->rawQuery('SELECT * FROM devices INNER JOIN coustemers ON (device
 foreach ($InVoice as $v) {
 
 
-    if ($_GET['t']>0){
+    if (@$_GET['t']>0){
 
         $name='فورتك';
         $MobileNumber="0144249930";

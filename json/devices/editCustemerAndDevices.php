@@ -19,6 +19,7 @@ $idDevicesPost = (int)$_POST['idDevices'];
 $monyPost = (int)$_POST['Mony'];
 $serialPost = $db->escape($_POST['Serial']);
 $IdCustemer = $db->escape($_POST['IdCustemer']);
+$warrantyBy = $db->escape($_POST['warrantyBy']);
 
 
 /*
@@ -31,6 +32,18 @@ if (empty($namePost)) {
 
     exit();
 }
+
+
+
+// علي حساب العميل
+if (!isset($_POST['byCostemer'])) {
+
+    $byCostemer = '0';
+}
+else {
+    $byCostemer = '1';
+}
+
 
 
 /*
@@ -64,6 +77,8 @@ $devicesData = Array(
     'Serial' => trim($serialPost),
     'Comment' => trim($commentPost),
     'IDTypeDevice' => $IDTypeDevicePost,
+    'byCostemer' => $byCostemer,
+    'warrantyBy' => $warrantyBy,
     'Mony' => $monyPost
 );
 

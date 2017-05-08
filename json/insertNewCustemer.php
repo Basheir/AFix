@@ -19,6 +19,7 @@ $IDTypeDevicePost = (int)$_POST['IDTypeDevice'];
 $monyPost = (int)$_POST['Mony'];
 $serialPost = $db->escape($_POST['Serial']);
 $SizeMemoryPost = $db->escape($_POST['SizeMemoryDeviceTitle']);
+$warrantyBy = $db->escape($_POST['warrantyBy']);
 
 
 /*
@@ -31,6 +32,19 @@ if (empty($namePost)) {
 
     exit();
 }
+
+
+// علي حساب العميل
+if (!isset($_POST['byCostemer'])) {
+
+    $byCostemer = '0';
+}
+else {
+    $byCostemer = '1';
+}
+
+
+
 
 
 /** اضافة حالة الجهاز
@@ -82,6 +96,8 @@ if ($IDCusremer) {
         'IDTypeDevice' => $IDTypeDevicePost,
         'Mony' => $monyPost,
         'IdCustemer' => $IDCusremer,
+        'byCostemer' => $byCostemer,
+        'warrantyBy' => $warrantyBy,
         'SizeMemoryDevice' => $SizeMemoryPost
     );
 
@@ -131,6 +147,8 @@ if ($IDCusremer) {
             'IDTypeDevice' => $IDTypeDevicePost,
             'Mony' => $monyPost,
             'IdCustemer' => $insertCoustemer,
+            'byCostemer' => $byCostemer,
+            'warrantyBy' => $warrantyBy,
             'SizeMemoryDevice' => $SizeMemoryPost
 
         );

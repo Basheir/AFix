@@ -31,7 +31,7 @@
     <link href="js/plugins/toolbar/jquery.toolbar.css" rel="stylesheet"/>
     <link href="js/plugins/notie/notie.css" rel="stylesheet"/>
     <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
-    <link href="js/plugins/noty/animate.css" rel="stylesheet"/>
+    <link href="bower_components/bootstrap3-dialog/src/css/bootstrap-dialog.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style/assets/css/Mycss.css">
 </head>
 
@@ -198,7 +198,7 @@
                                 <form class="navbar-form" role="search">
                                     <div class="input-group">
 
-                                        <input type="text" class="form-control" name="searchID" id="searchID">
+                                        <input type="text" class="form-control text-uppercase" name="searchID" id="searchID">
                                         <input type="text" class="form-control hidden" value="n" name="searchBy" id="searchBy" >
 
 
@@ -392,7 +392,6 @@
 <script src="style/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
 <script src="style/assets/plugins/waves/waves.min.js"></script>
-<script src="style/assets/js/modern.min.js"></script>
 <script src="js/plugins/notie/notie.js"></script>
 <script src="js/SimpleAjaxUploader.js"></script>
 <script src="js/plugins/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
@@ -403,6 +402,7 @@
 <script src="js/plugins/clipboard/clipboard.min.js"></script>
 <script src="js/plugins/noty/packaged/jquery.noty.packaged.min.js"></script>
 <script src="js/plugins/navigo/navigo.min.js"></script>
+<script src="bower_components/bootstrap3-dialog/src/js/bootstrap-dialog.js"></script>
 <script src="js/MyJs.js"></script>
 
 
