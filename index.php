@@ -403,6 +403,7 @@
 <script src="js/plugins/noty/packaged/jquery.noty.packaged.min.js"></script>
 <script src="js/plugins/navigo/navigo.min.js"></script>
 <script src="bower_components/bootstrap3-dialog/src/js/bootstrap-dialog.js"></script>
+<script src="bower_components/fly/src/fly.js"></script>
 <script src="js/MyJs.js"></script>
 
 
