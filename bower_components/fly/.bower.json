@@ -1,0 +1,19 @@
+{
+  "name": "fly",
+  "dependencies": {},
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "jquery": "latest"
+  },
+  "homepage": "https://github.com/amibug/fly",
+  "_release": "ae595af90e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ae595af90e45a28455b96b1bfc79c234764595fe"
+  },
+  "_source": "git://github.com/amibug/fly.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/amibug/fly.git",
+  "_direct": true
+}
